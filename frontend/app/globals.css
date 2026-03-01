@@ -1,0 +1,50 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* ============================= */
+/* BUENOFURNI Design Variables   */
+/* ============================= */
+
+:root {
+  --background: #F6F1E8;
+  --foreground: #1F1F1F;
+  --muted: #6B6B6B;
+  --card: #FFFFFF;
+  --accent: #2F3A2E;
+  /* глубокий природный */
+  --accent-wood: #8B5A3C;
+  /* древесный оттенок */
+  --border: rgba(31, 31, 31, .12);
+}
+
+/* отключаем автоматический dark mode */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+/* глобальные базовые стили */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.button-primary {
+  background: var(--accent);
+  color: white;
+  padding: 12px 18px;
+  border-radius: 999px;
+  transition: 0.3s ease;
+}
+
+.button-primary:hover {
+  opacity: 0.9;
+}
+
+.button-secondary {
+  border: 1px solid var(--border);
+  padding: 12px 18px;
+  border-radius: 999px;
+}
