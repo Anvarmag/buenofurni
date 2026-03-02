@@ -1,18 +1,36 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { products } from '../../_data/products';
 import ProductClient from './ProductClient';
+import ProductGallery from '@/components/product/ProductGallery';
 import Script from 'next/script';
 import Link from 'next/link';
+import { promises as fs } from 'fs';
+import path from 'path';
+import { Product } from '../../_data/products';
+
+async function getProducts(): Promise<Product[]> {
+    try {
+        const filePath = path.join(process.cwd(), 'data', 'products.json');
+        const fileContents = await fs.readFile(filePath, 'utf8');
+        return JSON.parse(fileContents);
+    } catch (e) {
+        console.error('Error reading products:', e);
+        return [];
+    }
+}
 
 export async function generateStaticParams() {
+    const products = await getProducts();
     return products.map((p) => ({
         slug: p.slug,
     }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
+export const revalidate = 3600; // 1 hour caching for VPS offload
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+    const products = await getProducts();
     const product = products.find(p => p.slug === params.slug);
 
     if (!product) {
@@ -20,15 +38,29 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     }
 
     return {
-        title: `${product.title} | Купить онлайн`,
-        description: product.shortDescription,
+        title: `${product.title} | Купить по цене от ${product.priceFrom} ₽`,
+        description: `${product.title} от BUENOFURNI. ${product.shortDescription} Заказывайте напрямую у производителя!`,
         openGraph: {
-            images: [product.imagePath]
+            title: `${product.title} - BUENOFURNI`,
+            description: product.shortDescription,
+            url: `https://buenofurni.ru/product/${product.slug}`,
+            images: [
+                {
+                    url: product.imagePath,
+                    width: 800,
+                    height: 800,
+                    alt: product.title,
+                }
+            ]
+        },
+        alternates: {
+            canonical: `/product/${product.slug}`
         }
     };
 }
 
-export default function ProductPage({ params }: { params: { slug: string } }) {
+export default async function ProductPage({ params }: { params: { slug: string } }) {
+    const products = await getProducts();
     const product = products.find(p => p.slug === params.slug);
 
     if (!product) {
@@ -72,26 +104,12 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                 <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
 
                     {/* Image Gallery */}
-                    <div className="relative aspect-[4/5] lg:aspect-square bg-gray-50 rounded-2xl overflow-hidden shadow-sm border border-black/5">
-                        <div className="absolute top-6 left-6 z-10 flex flex-col gap-2 items-start">
-                            {product.availability === 'in-stock' && (
-                                <span className="bg-white text-black text-sm font-bold px-4 py-2 rounded-full shadow-md tracking-wide">
-                                    В наличии
-                                </span>
-                            )}
-                            {product.badges.map(b => (
-                                <span key={b} className="bg-[var(--accent)] text-white text-sm font-bold px-4 py-2 rounded-full shadow-md tracking-wide">
-                                    {b}
-                                </span>
-                            ))}
-                        </div>
-
-                        <Image
-                            src={product.imagePath}
-                            alt={product.title}
-                            fill
-                            className="object-cover"
-                            priority
+                    <div className="relative aspect-[4/5] lg:aspect-square bg-gray-50 rounded-2xl overflow-hidden shadow-sm border border-black/5 pt-12 md:pt-0">
+                        <ProductGallery
+                            images={[product.imagePath, ...(product.galleryImages || [])]}
+                            title={product.title}
+                            badges={product.badges}
+                            inStock={product.availability === 'in-stock'}
                         />
                     </div>
 
@@ -105,15 +123,29 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                         <div className="mb-10 pb-10 border-b border-black/10">
                             <span className="text-sm uppercase tracking-wider text-gray-500 block mb-2">Базовая стоимость</span>
                             <span className="text-4xl font-bold text-black" itemProp="price">
-                                от {product.priceFrom.toLocaleString('ru-RU')} ₽
+                                {product.priceFrom.toLocaleString('ru-RU')} ₽
                             </span>
                         </div>
 
                         <div className="flex flex-col gap-6 mb-12">
                             <div>
+                                <h3 className="text-sm uppercase tracking-wider text-gray-500 mb-3">Тип мебели</h3>
+                                <div className="inline-flex bg-gray-100 items-center justify-center px-5 py-2.5 rounded-full font-medium text-gray-800">
+                                    {product.category || 'Стулья'}
+                                </div>
+                            </div>
+
+                            <div>
                                 <h3 className="text-sm uppercase tracking-wider text-gray-500 mb-3">Обивка (Материал)</h3>
                                 <div className="inline-flex bg-gray-100 items-center justify-center px-5 py-2.5 rounded-full font-medium text-gray-800">
                                     {product.upholstery}
+                                </div>
+                            </div>
+
+                            <div>
+                                <h3 className="text-sm uppercase tracking-wider text-gray-500 mb-3">Материал ножек</h3>
+                                <div className="inline-flex bg-gray-100 items-center justify-center px-5 py-2.5 rounded-full font-medium text-gray-800">
+                                    {product.legsMaterial || 'Березовая фанера'}
                                 </div>
                             </div>
 

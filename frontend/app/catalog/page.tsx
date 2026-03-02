@@ -1,18 +1,37 @@
 import { Metadata } from 'next';
 import CatalogClient from './CatalogClient';
-import { products } from '../_data/products';
 import Script from 'next/script';
 import Link from 'next/link';
+import { promises as fs } from 'fs';
+import path from 'path';
+import { Product } from '../_data/products';
+
+export const revalidate = 3600; // 1 hour caching for VPS offload
 
 export const metadata: Metadata = {
-    title: 'Каталог стульев и кресел | BUENOFURNI',
-    description: 'Каталог премиальной мебели от производителя BUENOFURNI. Стулья, столы, кресла из берёзовой фанеры. Выбирайте ткань, цвет ножек и создавайте стул под ваш интерьер.',
+    title: 'Каталог стульев и кресел | BUENOFURNI в Москве и РФ',
+    description: 'Каталог премиальной мебели от производителя BUENOFURNI. Стулья, столы, кресла из берёзовой фанеры.',
     alternates: {
         canonical: '/catalog',
+    },
+    openGraph: {
+        title: 'Каталог стульев и кресел | BUENOFURNI',
+        description: 'Каталог премиальной мебели от производителя BUENOFURNI. Выбирайте ткань, цвет ножек и создавайте стул под ваш интерьер.',
+        url: 'https://buenofurni.ru/catalog',
+        images: [{ url: '/generated/hero_chair.png', width: 1200, height: 630 }],
     }
 };
 
-export default function CatalogPage() {
+export default async function CatalogPage() {
+    const filePath = path.join(process.cwd(), 'data', 'products.json');
+    let products: Product[] = [];
+
+    try {
+        const fileContents = await fs.readFile(filePath, 'utf8');
+        products = JSON.parse(fileContents);
+    } catch (error) {
+        console.error('Error reading products.json:', error);
+    }
 
     // Generate Schema.org ItemList structure
     const schemaMarkup = {

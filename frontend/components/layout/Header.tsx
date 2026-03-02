@@ -65,7 +65,7 @@ export default function Header() {
                 <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
                     {/* Logo */}
                     <Link href="/" className={`group z-50 flex items-center text-lg font-bold tracking-widest uppercase transition-colors duration-300 ${isDarkText ? "text-black" : "text-white"}`}>
-                        <span>BUENOFURNI</span>
+                        <span>БУЭНОФУРНИ | BUENOFURNI</span>
                     </Link>
 
                     {/* Desktop Navigation */}
