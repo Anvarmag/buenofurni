@@ -34,7 +34,10 @@ export default function ProductGallery({
                 {/* Main Image */}
                 <div
                     className="relative w-full flex-1 bg-transparent overflow-hidden min-h-[200px] cursor-zoom-in group"
-                    onClick={() => setIsZoomOpen(true)}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        setIsZoomOpen(true);
+                    }}
                 >
                     <Image
                         src={images[activeIndex]}

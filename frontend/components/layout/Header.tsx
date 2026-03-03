@@ -64,7 +64,7 @@ export default function Header() {
             >
                 <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
                     {/* Logo */}
-                    <Link href="/" className={`group z-50 flex items-center text-lg font-bold tracking-widest uppercase transition-colors duration-300 ${isDarkText ? "text-black" : "text-white"}`}>
+                    <Link href="/" className={`relative group z-[60] flex items-center text-lg font-bold tracking-widest uppercase transition-colors duration-300 ${isDarkText ? "text-black" : "text-white"}`}>
                         <span>БУЭНОФУРНИ | BUENOFURNI</span>
                     </Link>
 
@@ -102,7 +102,7 @@ export default function Header() {
                     </nav>
 
                     {/* Desktop CTA & Mobile Toggle */}
-                    <div className="flex items-center gap-4 z-50">
+                    <div className="relative flex items-center gap-4 z-[60]">
                         <button
                             onClick={handleCtaClick}
                             className="hidden rounded-full bg-[var(--accent)] px-5 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90 md:block"
@@ -111,7 +111,7 @@ export default function Header() {
                         </button>
 
                         <button
-                            className="p-2 md:hidden"
+                            className="relative p-2 md:hidden z-[60]"
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                             aria-label={isMobileMenuOpen ? "Закрыть меню" : "Открыть меню"}
                         >
