@@ -9,21 +9,21 @@ const MODELS = [
         name: "BUENOFURNI VELA",
         desc: "", // Removed description
         price: "от 5 900 ₽",
-        image: "/generated/chair_boucle_light_oak_1772143430205.png",
+        image: "/generated/chair_boucle_light_oak_1772143430205.webp",
     },
     {
         id: "aurora",
         name: "BUENOFURNI AURORA",
         desc: "", // Removed description
         price: "от 5 900 ₽",
-        image: "/generated/chair_microvelour_dark_walnut_1772143445101.png",
+        image: "/generated/chair_microvelour_dark_walnut_1772143445101.webp",
     },
     {
         id: "anora",
         name: "BUENOFURNI ANORA",
         desc: "", // Removed description
         price: "от 5 900 ₽",
-        image: "/generated/chair_ecoleather_light_oak_1772144305992.png",
+        image: "/generated/chair_ecoleather_light_oak_1772144305992.webp",
     }
 ];
 

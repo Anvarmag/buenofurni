@@ -446,7 +446,7 @@
     "upholstery": "Экокожа",
     "legsMaterial": "Массив дуба",
     "legsColor": "Натуральный",
-    "imagePath": "/generated/1772439418677_img_1849.jpg",
+    "imagePath": "/generated/1772439418677_img_1849.webp",
     "shortDescription": ""
   },
   {
@@ -461,13 +461,13 @@
     "upholstery": "Микровелюр",
     "legsMaterial": "Березовая фанера",
     "legsColor": "Орех",
-    "imagePath": "/generated/1772396944943_img_1847.jpg",
+    "imagePath": "/generated/1772396944943_img_1847.webp",
     "shortDescription": "",
     "galleryImages": [
-      "/generated/1772397506841_img_1833.jpg",
-      "/generated/1772397509045_img_1842.jpg",
-      "/generated/1772397511431_img_1838.jpg",
-      "/generated/1772397514346_img_1847.jpg"
+      "/generated/1772397506841_img_1833.webp",
+      "/generated/1772397509045_img_1842.webp",
+      "/generated/1772397511431_img_1838.webp",
+      "/generated/1772397514346_img_1847.webp"
     ]
   }
 ]

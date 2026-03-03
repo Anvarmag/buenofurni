@@ -22,11 +22,11 @@ export default function CustomClient() {
     }, []);
 
     const galleryImages = [
-        "/generated/custom_example_01_1772182175242.png",
-        "/generated/custom_example_02_1772182188889.png",
-        "/generated/custom_example_03_1772182202585.png",
-        "/generated/custom_example_04_1772182216731.png",
-        "/generated/custom_hero_1772182161501.png",
+        "/generated/custom_example_01_1772182175242.webp",
+        "/generated/custom_example_02_1772182188889.webp",
+        "/generated/custom_example_03_1772182202585.webp",
+        "/generated/custom_example_04_1772182216731.webp",
+        "/generated/custom_hero_1772182161501.webp",
         "/generated/custom_example_06_kitchen.png.png"
     ];
 
@@ -45,7 +45,7 @@ export default function CustomClient() {
             <section className="relative w-full min-h-[100dvh] md:min-h-[700px] flex items-center justify-center pt-20 overflow-hidden bg-black text-white">
                 <div className="absolute inset-0 z-0">
                     <Image
-                        src="/generated/custom_hero_premium.png"
+                        src="/generated/custom_hero_premium.webp"
                         alt="Премиальный интерьер с обеденным стулом"
                         fill
                         className="object-cover opacity-60"
@@ -178,10 +178,10 @@ export default function CustomClient() {
                                     <span className="block text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">Отделка ножек</span>
                                     <div className="flex flex-wrap gap-4">
                                         {[
-                                            { id: "oak", img: "/generated/leg_finish_oak.png", label: "Дуб" },
-                                            { id: "walnut", img: "/generated/leg_finish_walnut.png", label: "Орех" },
-                                            { id: "wenge", img: "/generated/leg_finish_wenge.png", label: "Венге" },
-                                            { id: "ral", img: "/generated/leg_finish_ral.png", label: "RAL" }
+                                            { id: "oak", img: "/generated/leg_finish_oak.webp", label: "Дуб" },
+                                            { id: "walnut", img: "/generated/leg_finish_walnut.webp", label: "Орех" },
+                                            { id: "wenge", img: "/generated/leg_finish_wenge.webp", label: "Венге" },
+                                            { id: "ral", img: "/generated/leg_finish_ral.webp", label: "RAL" }
                                         ].map(l => (
                                             <button
                                                 key={l.id}
@@ -205,7 +205,7 @@ export default function CustomClient() {
                         <div className="w-full lg:w-1/2">
                             <div className="relative aspect-square md:aspect-[4/3] rounded-[3rem] overflow-hidden shadow-2xl">
                                 <Image
-                                    src="/generated/custom_example_04_1772182216731.png"
+                                    src="/generated/custom_example_04_1772182216731.webp"
                                     alt="Пример кастомного стула BUENOFURNI"
                                     fill
                                     className="object-cover"

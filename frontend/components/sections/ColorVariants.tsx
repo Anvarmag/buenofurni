@@ -10,19 +10,19 @@ const VARIANTS = [
         id: "beige",
         name: "Массив березы(Натуральный) / Букле (Беж)",
         colorCode: "#EBE3D5", // Beige
-        image: "/generated/chair_beige_1772141177229.png",
+        image: "/generated/chair_beige_1772141177229.webp",
     },
     {
         id: "olive",
         name: "Светло коричневый / Микровелюр (Темно бежевый)",
         colorCode: "#957b6e", // Olive green
-        image: "/generated/chair_olive_1772141156483.png",
+        image: "/generated/chair_olive_1772141156483.webp",
     },
     {
         id: "gray",
         name: "Тёмно коричневый / Экокожа (Коричневый)",
         colorCode: "#56433c", // Gray
-        image: "/generated/chair_gray_1772141189527.png",
+        image: "/generated/chair_gray_1772141189527.webp",
     },
 ];
 

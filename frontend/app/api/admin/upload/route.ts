@@ -78,12 +78,13 @@ export async function POST(req: NextRequest) {
 
         // Full-size: max 1600px wide, WebP quality 82, no upscale
         await sharp(buffer)
+            .rotate()
             .resize({ width: 1600, withoutEnlargement: true })
             .webp({ quality: 82 })
             .toFile(mainFilePath);
 
-        // Thumbnail: 400px wide, WebP quality 80
         await sharp(buffer)
+            .rotate()
             .resize({ width: 400, withoutEnlargement: true })
             .webp({ quality: 80 })
             .toFile(thumbFilePath);

@@ -59,14 +59,15 @@ export default function Header() {
     return (
         <>
             <header
-                className={`fixed inset-x-0 top-0 z-[9999] transition-all duration-300 ${scrolled
-                        ? "bg-[var(--background)]/95 backdrop-blur-md border-b border-black/10 py-3"
-                        : isDarkHeroPage ? "bg-transparent py-5" : "bg-[var(--background)] py-5"
+                className={`fixed inset-x-0 top-0 z-[50] transition-all duration-300 ${scrolled
+                    ? "bg-[var(--background)]/95 backdrop-blur-md border-b border-black/10 py-3"
+                    : isDarkHeroPage ? "bg-transparent py-5" : "bg-[var(--background)] py-5"
                     }`}
+                style={{ paddingTop: 'calc(var(--sa-top, 0px) + 1.25rem)' }}
             >
                 <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
                     {/* Logo */}
-                    <Link href="/" className={`relative group z-[60] flex items-center text-lg font-bold tracking-widest uppercase transition-colors duration-300 ${isDarkText ? "text-black" : "text-white"}`}>
+                    <Link href="/" className={`relative group z-[55] flex items-center text-lg font-bold tracking-widest uppercase transition-colors duration-300 ${isDarkText ? "text-black" : "text-white"}`}>
                         <span>БУЭНОФУРНИ | BUENOFURNI</span>
                     </Link>
 
@@ -104,7 +105,7 @@ export default function Header() {
                     </nav>
 
                     {/* Desktop CTA & Mobile Toggle */}
-                    <div className="relative flex items-center gap-4 z-[60]">
+                    <div className="relative flex items-center gap-4 z-[55]">
                         <button
                             onClick={handleCtaClick}
                             className="hidden rounded-full bg-[var(--accent)] px-5 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90 md:block"
@@ -113,7 +114,7 @@ export default function Header() {
                         </button>
 
                         <button
-                            className="relative p-2 md:hidden z-[60]"
+                            className="relative p-2 md:hidden z-[55]"
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                             aria-label={isMobileMenuOpen ? "Закрыть меню" : "Открыть меню"}
                         >
@@ -138,7 +139,7 @@ export default function Header() {
 
             {/* Mobile Menu Overlay */}
             <div
-                className={`fixed inset-0 z-30 bg-[var(--background)] transition-transform duration-500 ease-in-out md:hidden ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+                className={`fixed inset-0 z-40 bg-[var(--background)] transition-transform duration-500 ease-in-out md:hidden ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
                     }`}
             >
                 <div className="flex h-full flex-col justify-between px-6 pb-12 pt-28">

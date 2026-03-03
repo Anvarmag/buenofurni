@@ -54,10 +54,10 @@ export default function HorecaClient() {
     ];
 
     const galleryImages = [
-        "/generated/horeca_project_custom_01.png",
-        "/generated/horeca_project_custom_02.png",
-        "/generated/horeca_project_custom_03.png",
-        "/generated/horeca_project_custom_04.png"
+        "/generated/horeca_project_custom_01.webp",
+        "/generated/horeca_project_custom_02.webp",
+        "/generated/horeca_project_custom_03.webp",
+        "/generated/horeca_project_custom_04.webp"
     ];
 
     return (
@@ -68,7 +68,7 @@ export default function HorecaClient() {
                 <div className="absolute inset-0 w-full h-full lg:w-1/2 lg:right-0 lg:left-auto pt-24 lg:pt-0">
                     <div className="relative w-full h-full">
                         <Image
-                            src="/generated/hero_chair_v3.png"
+                            src="/generated/hero_chair_v3.webp"
                             alt="Интерьер ресторана с премиальной мебелью"
                             fill
                             className="object-cover"

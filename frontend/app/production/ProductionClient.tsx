@@ -53,7 +53,7 @@ export default function ProductionClient() {
             num: "01",
             title: "Подготовка материала",
             text: "Всё начинается с отбора премиальной березовой фанеры и натурального шпона. Мы проверяем влажность и сортируем листы, чтобы каркас будущего стула был геометрически стабильным на десятилетия.",
-            img: "/generated/prod_step_01_1772182861362.png",
+            img: "/generated/prod_step_01_1772182861362.webp",
             link: "/materials",
             linkText: "Подробнее о материалах →"
         },
@@ -61,19 +61,19 @@ export default function ProductionClient() {
             num: "02",
             title: "Раскрой и сборка каркаса",
             text: "Фанера режется на высокоточном ЧПУ оборудовании, что гарантирует точное совпадение деталей. Затем мастера вручную собирают каркас с использованием шиповых соединений и надежного крепежа.",
-            img: "/generated/prod_step_02_1772182877749.png"
+            img: "/generated/prod_step_02_1772182877749.webp"
         },
         {
             num: "03",
             title: "Обивка и финишная отделка",
             text: "Ножки покрываются тремя слоями премиального итальянского лака или масла. На обивку идут ткани повышенной износостойкости. Внутреннее наполнение — пенополиуретан (ППУ) высокой плотности.",
-            img: "/generated/prod_step_03_1772182891662.png"
+            img: "/generated/prod_step_03_1772182891662.webp"
         },
         {
             num: "04",
             title: "ОТК и упаковка",
             text: "Каждый стул проходит строгий отдел технического контроля (ОТК). Мы проверяем надежность швов, ровность лакокрасочного покрытия и устойчивость изделия перед бережной упаковкой.",
-            img: "/generated/prod_step_04_1772182906129.png"
+            img: "/generated/prod_step_04_1772182906129.webp"
         }
     ];
 
@@ -123,7 +123,7 @@ export default function ProductionClient() {
             <section className="relative w-full h-[85vh] min-h-[600px] flex items-center bg-black overflow-hidden px-4">
                 <div className="absolute inset-0 z-0">
                     <Image
-                        src="/generated/production_hero_1772182848435.png"
+                        src="/generated/production_hero_1772182848435.webp"
                         alt="Производственный цех BUENOFURNI мастерская"
                         fill
                         className="object-cover opacity-60"
@@ -303,7 +303,7 @@ export default function ProductionClient() {
                             <Reveal>
                                 <div className="relative aspect-square rounded-full overflow-hidden shadow-xl border-4 border-white">
                                     <Image
-                                        src="/generated/prod_sustain_1772182921244.png"
+                                        src="/generated/prod_sustain_1772182921244.webp"
                                         alt="Экологичное мебельное производство макро"
                                         fill
                                         className="object-cover scale-110"

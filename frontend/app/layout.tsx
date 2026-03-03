@@ -103,7 +103,7 @@ export default function RootLayout({
       <body className="flex min-h-screen flex-col bg-[var(--background)] font-sans text-[var(--foreground)] antialiased selection:bg-[var(--accent)] selection:text-white">
         <ModalProvider>
           <Header />
-          <main className="flex-1">
+          <main className="flex-1 pt-[80px] md:pt-[92px]">
             {children}
           </main>
           <Footer />

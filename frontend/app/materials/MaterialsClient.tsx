@@ -58,7 +58,7 @@ export default function MaterialsClient() {
                 "Антивандальный эффект («Антикоготь»)",
                 "Глубокие, переливающиеся на свету оттенки"
             ],
-            img: "/generated/fabric_microvelour_macro_1772179422710.png"
+            img: "/generated/fabric_microvelour_macro_1772179422710.webp"
         },
         boucle: {
             title: "Букле",
@@ -69,7 +69,7 @@ export default function MaterialsClient() {
                 "Прекрасно держит форму на спинках и сиденьях",
                 "Идеально для интерьеров в стиле джапанди и минимализм"
             ],
-            img: "/generated/fabric_boucle_macro_1772179435846.png"
+            img: "/generated/fabric_boucle_macro_1772179435846.webp"
         },
         ecoleather: {
             title: "Премиальная экокожа",
@@ -80,7 +80,7 @@ export default function MaterialsClient() {
                 "Атмосферный вид для статусных интерьеров и HoReCa",
                 "Не трескается со временем"
             ],
-            img: "/generated/fabric_ecoleather_macro_1772179449148.png"
+            img: "/generated/fabric_ecoleather_macro_1772179449148.webp"
         }
     };
 
@@ -91,7 +91,7 @@ export default function MaterialsClient() {
             <section className="relative w-full h-[80vh] min-h-[600px] flex items-center justify-center text-center px-4 overflow-hidden bg-black">
                 <div className="absolute inset-0 z-0">
                     <Image
-                        src="/generated/materials_hero_macro_1772179379066.png"
+                        src="/generated/materials_hero_macro_1772179379066.webp"
                         alt="Макро фактура премиальных материалов мебели"
                         fill
                         className="object-cover opacity-60 scale-105 animate-[slow-pan_20s_ease-in-out_infinite_alternate]"
@@ -123,7 +123,7 @@ export default function MaterialsClient() {
                             <Reveal>
                                 <div className="relative aspect-square md:aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl">
                                     <Image
-                                        src="/generated/materials_birch_plywood_edge_1772179393601.png"
+                                        src="/generated/materials_birch_plywood_edge_1772179393601.webp"
                                         alt="Срез березовой фанеры крупным планом"
                                         fill
                                         className="object-cover"
@@ -175,7 +175,7 @@ export default function MaterialsClient() {
                             <Reveal>
                                 <div className="relative aspect-square md:aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl">
                                     <Image
-                                        src="/generated/materials_veneer_grain_1772179408932.png"
+                                        src="/generated/materials_veneer_grain_1772179408932.webp"
                                         alt="Фактура натурального шпона ореха"
                                         fill
                                         className="object-cover"
@@ -198,7 +198,7 @@ export default function MaterialsClient() {
                     <Reveal delay={200}>
                         <div className="relative w-full h-[300px] md:h-[400px] rounded-3xl overflow-hidden mb-16 shadow-lg">
                             <Image
-                                src="/generated/materials_fabric_samples_1772143484127.png"
+                                src="/generated/materials_fabric_samples_1772143484127.webp"
                                 alt="Образцы обивочных тканей BUENOFURNI"
                                 fill
                                 className="object-cover"
@@ -273,10 +273,10 @@ export default function MaterialsClient() {
                     <Reveal delay={200}>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
                             {[
-                                { name: "Натуральный", img: "/generated/leg_finish_oak.png" },
-                                { name: "Коричневый", img: "/generated/leg_finish_walnut.png" },
-                                { name: "Светло коричневый", img: "/generated/leg_finish_wenge.png" },
-                                { name: "Орех", img: "/generated/leg_finish_ral.png" }
+                                { name: "Натуральный", img: "/generated/leg_finish_oak.webp" },
+                                { name: "Коричневый", img: "/generated/leg_finish_walnut.webp" },
+                                { name: "Светло коричневый", img: "/generated/leg_finish_wenge.webp" },
+                                { name: "Орех", img: "/generated/leg_finish_ral.webp" }
                             ].map((color, i) => (
                                 <div key={i} className="flex flex-col items-center gap-4">
                                     <div

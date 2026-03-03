@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import { promises as fs } from 'fs';
 import path from 'path';
 
@@ -101,6 +102,14 @@ export async function PUT(req: NextRequest) {
 
         const filePath = path.join(process.cwd(), 'data', 'products.json');
         await fs.writeFile(filePath, JSON.stringify(products, null, 2), 'utf8');
+
+        // Revalidate cache for immediate site updates
+        revalidatePath('/catalog');
+        for (const item of products) {
+            if (item.slug) {
+                revalidatePath(`/product/${item.slug}`);
+            }
+        }
 
         const response = NextResponse.json({ ok: true });
         response.headers.set('Cache-Control', 'no-store');

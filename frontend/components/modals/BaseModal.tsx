@@ -92,7 +92,7 @@ export default function BaseModal({
     }
 
     return (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 text-left">
+        <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 sm:p-6 text-left">
             {/* Backdrop */}
             <div
                 className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity"
@@ -104,7 +104,8 @@ export default function BaseModal({
             <div
                 role="dialog"
                 aria-modal="true"
-                className="relative w-full max-w-lg overflow-hidden rounded-3xl bg-[var(--background)] shadow-2xl animate-in fade-in zoom-in-95 duration-200"
+                className="relative w-full max-w-lg overflow-y-auto max-h-[calc(100dvh-24px)] rounded-3xl bg-[var(--background)] shadow-2xl animate-in fade-in zoom-in-95 duration-200"
+                style={{ paddingBottom: 'max(24px, env(safe-area-inset-bottom))' }}
             >
                 <div className="px-6 py-8 sm:p-10">
                     {/* Close button */}

@@ -6,9 +6,9 @@ import Link from "next/link";
 import { useModal } from "@/app/providers";
 
 const HERO_IMAGES = [
-    "/generated/hero_chair_v1.png",
-    "/generated/hero_chair_v2.png",
-    "/generated/hero_chair_v3.png",
+    "/generated/hero_chair_v1.webp",
+    "/generated/hero_chair_v2.webp",
+    "/generated/hero_chair_v3.webp",
 ];
 
 export default function Hero() {
