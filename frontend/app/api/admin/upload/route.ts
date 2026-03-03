@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { promises as fs } from 'fs';
 import path from 'path';
+import sharp from 'sharp';
 
 export const runtime = 'nodejs';
 
@@ -60,20 +61,37 @@ export async function POST(req: NextRequest) {
         }
 
         const buffer = Buffer.from(await file.arrayBuffer());
-        // Clean filename, avoid strange characters, ensure lowercase
-        const cleanName = file.name.replace(/[^a-zA-Z0-9.\-_]/g, '').toLowerCase();
-        // Generate unique name to avoid overwriting
-        const uniqueName = `${Date.now()}_${cleanName}`;
+
+        // Generate a clean base name (no extension), unique
+        const rawName = file.name.replace(/\.[^.]+$/, ''); // strip extension
+        const cleanName = rawName.replace(/[^a-zA-Z0-9\-_]/g, '').toLowerCase();
+        const uniqueBase = `${Date.now()}_${cleanName}`;
 
         const uploadDir = path.join(process.cwd(), 'public', 'generated');
         await fs.mkdir(uploadDir, { recursive: true });
 
-        const filePath = path.join(uploadDir, uniqueName);
-        await fs.writeFile(filePath, buffer);
+        const mainFileName = `${uniqueBase}.webp`;
+        const thumbFileName = `${uniqueBase}_thumb.webp`;
+
+        const mainFilePath = path.join(uploadDir, mainFileName);
+        const thumbFilePath = path.join(uploadDir, thumbFileName);
+
+        // Full-size: max 1600px wide, WebP quality 82, no upscale
+        await sharp(buffer)
+            .resize({ width: 1600, withoutEnlargement: true })
+            .webp({ quality: 82 })
+            .toFile(mainFilePath);
+
+        // Thumbnail: 400px wide, WebP quality 80
+        await sharp(buffer)
+            .resize({ width: 400, withoutEnlargement: true })
+            .webp({ quality: 80 })
+            .toFile(thumbFilePath);
 
         return NextResponse.json({
             ok: true,
-            imagePath: `/generated/${uniqueName}`
+            imagePath: `/generated/${mainFileName}`,
+            thumbPath: `/generated/${thumbFileName}`,
         });
 
     } catch (error) {
