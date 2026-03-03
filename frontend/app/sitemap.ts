@@ -44,7 +44,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         });
 
         return [...staticRoutes, ...dynamicRoutes];
-    } catch (e) {
+    } catch {
         // Fallback if products.json fails to read during build
         return staticRoutes;
     }

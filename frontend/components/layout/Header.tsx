@@ -14,7 +14,7 @@ const NAV_LINKS = [
     { href: "/contacts", label: "Контакты" },
 ];
 
-export default function Header() {
+export default function Header({ variant = "default" }: { variant?: "default" | "overlay" }) {
     const pathname = usePathname();
     const { openModal } = useModal();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -22,12 +22,8 @@ export default function Header() {
 
     const isHorecaPage = pathname === "/horeca";
 
-    // Check if the current page has a dark hero section
-    const darkHeroPaths = ["/materials", "/production", "/custom"];
-    const isDarkHeroPage = darkHeroPaths.includes(pathname);
-
-    // Text should be dark if scrolled, if mobile menu is open, or if it's NOT a dark hero page
-    const isDarkText = scrolled || isMobileMenuOpen || !isDarkHeroPage;
+    // Text should be dark if scrolled, if mobile menu is open, or if it's NOT an overlay header
+    const isDarkText = scrolled || isMobileMenuOpen || variant === "default";
 
     // Handle scroll state for header styling
     useEffect(() => {
@@ -42,8 +38,10 @@ export default function Header() {
     useEffect(() => {
         if (isMobileMenuOpen) {
             document.body.style.overflow = "hidden";
+            document.body.classList.add("has-overlay");
         } else {
             document.body.style.overflow = "auto";
+            document.body.classList.remove("has-overlay");
         }
     }, [isMobileMenuOpen]);
 
@@ -59,9 +57,10 @@ export default function Header() {
     return (
         <>
             <header
-                className={`fixed inset-x-0 top-0 z-[60] h-[var(--header-h)] transition-all duration-300 ${scrolled
-                    ? "bg-[var(--background)]/95 backdrop-blur-md shadow-sm border-b border-black/10"
-                    : isDarkHeroPage ? "bg-transparent" : "bg-[var(--background)]"
+                className={`fixed inset-x-0 top-0 h-[var(--header-h)] transition-all duration-300 ${isMobileMenuOpen ? "z-[110] bg-transparent" : `z-[50] ${scrolled
+                            ? "bg-[var(--background)]/95 backdrop-blur-md shadow-sm border-b border-black/10"
+                            : variant === "overlay" ? "bg-transparent" : "bg-[var(--background)]"
+                        }`
                     }`}
                 style={{ paddingTop: 'var(--sa-top, 0px)' }}
             >
@@ -139,10 +138,10 @@ export default function Header() {
 
             {/* Mobile Menu Overlay */}
             <div
-                className={`fixed inset-0 z-[100] bg-[var(--background)] transition-transform duration-500 ease-in-out md:hidden ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
-                    }`}
+                className={`fixed inset-0 z-[100] bg-[var(--background)] transition-transform duration-500 ease-in-out md:hidden flex flex-col ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+                    } overscroll-none`}
             >
-                <div className="flex h-full flex-col justify-between px-6 pb-12 pt-28">
+                <div className="flex flex-1 flex-col justify-between px-6 pb-12 pt-28 overflow-y-auto">
                     <nav className="flex flex-col gap-6 text-2xl font-medium">
                         {NAV_LINKS.map((link) => {
                             const isActive = pathname === link.href;

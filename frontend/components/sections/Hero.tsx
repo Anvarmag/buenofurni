@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
+import FallbackImage from "@/components/ui/FallbackImage";
 import Link from "next/link";
 import { useModal } from "@/app/providers";
 
@@ -43,13 +43,13 @@ export default function Hero() {
                         <div className="mt-10 flex flex-col sm:flex-row flex-wrap gap-4">
                             <Link
                                 href="/catalog"
-                                className="inline-flex w-full items-center justify-center rounded-full bg-[var(--accent)] px-8 py-4 text-base font-medium text-white transition-all hover:bg-[var(--accent)]/90 hover:scale-[1.02] sm:w-auto shadow-lg shadow-black/5"
+                                className="inline-flex w-full items-center justify-center rounded-full bg-[var(--accent)] px-6 py-4 text-base font-medium text-white transition-all hover:bg-[var(--accent)]/90 hover:scale-[1.02] sm:w-auto sm:px-8 shadow-lg shadow-black/5 text-center whitespace-normal"
                             >
                                 Смотреть каталог
                             </Link>
                             <button
                                 onClick={() => openModal("b2c", "hero-request")}
-                                className="inline-flex w-full items-center justify-center rounded-full border border-black/15 bg-transparent px-8 py-4 text-base font-medium text-black transition-all hover:bg-black/5 hover:border-black/30 sm:w-auto"
+                                className="inline-flex w-full items-center justify-center rounded-full border border-black/15 bg-transparent px-6 py-4 text-base font-medium text-black transition-all hover:bg-black/5 hover:border-black/30 sm:w-auto sm:px-8 whitespace-normal text-center leading-tight"
                             >
                                 Рассчитать стоимость
                             </button>
@@ -77,7 +77,7 @@ export default function Hero() {
                     <div className="lg:col-span-7 relative animate-in slide-in-from-right-8 fade-in duration-1000 delay-200">
                         <div className="relative aspect-[4/3] sm:aspect-[16/10] overflow-hidden rounded-[2rem] bg-black/5 shadow-2xl">
                             {HERO_IMAGES.map((src, idx) => (
-                                <Image
+                                <FallbackImage
                                     key={src}
                                     src={src}
                                     alt="Деревянный стул из дуба и букле — BUENOFURNI"

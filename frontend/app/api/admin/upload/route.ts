@@ -25,7 +25,7 @@ function verifyBasicAuth(req: NextRequest) {
             if (user === adminUser && pwd === adminPass) {
                 return { ok: true };
             }
-        } catch (e) {
+        } catch {
             // Ignore decoding errors, treat as invalid auth
         }
     }

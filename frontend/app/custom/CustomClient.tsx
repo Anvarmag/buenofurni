@@ -1,13 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
+import FallbackImage from "@/components/ui/FallbackImage";
 import Link from "next/link";
 import { useModal } from "@/app/providers";
 
 export default function CustomClient() {
     const { openModal } = useModal();
     const [scrolled, setScrolled] = useState(false);
+    const [isNearBottom, setIsNearBottom] = useState(false);
 
     // Configurator state (visual only)
     const [selectedFabric, setSelectedFabric] = useState("microvelour");
@@ -16,6 +17,8 @@ export default function CustomClient() {
     useEffect(() => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 300);
+            const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 400;
+            setIsNearBottom(nearBottom);
         };
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
@@ -44,7 +47,7 @@ export default function CustomClient() {
             {/* Hero Section */}
             <section className="relative w-full min-h-[100dvh] md:min-h-[700px] flex items-center justify-center pt-20 overflow-hidden bg-black text-white">
                 <div className="absolute inset-0 z-0">
-                    <Image
+                    <FallbackImage
                         src="/generated/custom_hero_premium.webp"
                         alt="Премиальный интерьер с обеденным стулом"
                         fill
@@ -77,12 +80,12 @@ export default function CustomClient() {
                         <div className="flex flex-col sm:flex-row gap-4 w-full">
                             <button
                                 onClick={() => openModal('b2c', 'custom_page_hero')}
-                                className="button-primary h-16 px-8 text-lg font-bold shadow-xl shadow-[var(--accent)]/20 w-full sm:w-auto"
+                                className="button-primary h-16 px-6 sm:px-8 text-base sm:text-lg font-bold shadow-xl shadow-[var(--accent)]/20 w-full sm:w-auto whitespace-normal text-center leading-tight"
                             >
                                 Рассчитать стоимость
                             </button>
-                            <a href="https://t.me/buenofurni_support" target="_blank" rel="noopener noreferrer" className="button-secondary bg-white text-black h-16 px-6 text-lg font-bold flex items-center justify-center gap-2 hover:bg-[#2AABEE] hover:text-white hover:border-[#2AABEE] transition-all w-full sm:w-auto">
-                                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z" /></svg>
+                            <a href="https://t.me/buenofurni_support" target="_blank" rel="noopener noreferrer" className="button-secondary bg-white text-black h-16 px-6 text-base sm:text-lg font-bold flex items-center justify-center gap-2 hover:bg-[#2AABEE] hover:text-white hover:border-[#2AABEE] transition-all w-full sm:w-auto whitespace-normal text-center">
+                                <svg className="w-6 h-6 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z" /></svg>
                                 Telegram
                             </a>
                         </div>
@@ -204,7 +207,7 @@ export default function CustomClient() {
 
                         <div className="w-full lg:w-1/2">
                             <div className="relative aspect-square md:aspect-[4/3] rounded-[3rem] overflow-hidden shadow-2xl">
-                                <Image
+                                <FallbackImage
                                     src="/generated/custom_example_04_1772182216731.webp"
                                     alt="Пример кастомного стула BUENOFURNI"
                                     fill
@@ -245,7 +248,7 @@ export default function CustomClient() {
                     <div className="flex overflow-x-auto pb-8 gap-4 md:gap-6 snap-x snap-mandatory hide-scrollbars md:grid md:grid-cols-3 md:overflow-visible pr-4 md:pr-0">
                         {galleryImages.map((src, i) => (
                             <div key={i} className="relative min-w-[300px] sm:min-w-[400px] md:min-w-0 md:w-full aspect-square rounded-3xl overflow-hidden shadow-sm snap-center shrink-0 border border-black/5 group cursor-pointer">
-                                <Image
+                                <FallbackImage
                                     src={src}
                                     alt={`Пример выполненного индивидуального заказа ${i + 1}`}
                                     fill
@@ -301,10 +304,10 @@ export default function CustomClient() {
             </section>
 
             {/* Mobile Sticky Bottom CTA */}
-            <div className={`md:hidden fixed bottom-0 left-0 right-0 p-4 bg-white/90 backdrop-blur-[20px] border-t border-black/10 shadow-[0_-10px_40px_-10px_rgba(0,0,0,0.1)] transition-transform duration-300 z-40 ${scrolled ? 'translate-y-0' : 'translate-y-[150%]'}`}>
+            <div className={`md:hidden fixed bottom-0 left-0 right-0 p-4 bg-white/90 backdrop-blur-[20px] border-t border-black/10 shadow-[0_-10px_40px_-10px_rgba(0,0,0,0.1)] transition-transform duration-300 z-40 ${scrolled && !isNearBottom ? 'translate-y-0' : 'translate-y-[150%]'}`}>
                 <button
                     onClick={() => openModal('b2c', 'custom_page_sticky')}
-                    className="button-primary w-full h-14 text-lg font-bold shadow-md"
+                    className="button-primary w-full h-14 text-base sm:text-lg font-bold shadow-md whitespace-normal text-center leading-tight px-4"
                 >
                     Рассчитать стоимость
                 </button>

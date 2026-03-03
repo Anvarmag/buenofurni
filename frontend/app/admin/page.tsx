@@ -1,12 +1,13 @@
 import Link from 'next/link';
 import AdminCatalogEditor from './AdminCatalogEditor';
+import PageLayout from "@/components/layout/PageLayout";
 
 export const dynamic = 'force-dynamic';
 
 export default function AdminPage() {
     return (
-        <main className="bg-[var(--background)] pt-32 pb-16 px-4 min-h-screen">
-            <div className="max-w-6xl mx-auto space-y-8">
+        <PageLayout headerVariant="default">
+            <div className="max-w-6xl mx-auto space-y-8 px-4 py-12">
                 <div className="flex justify-between items-center">
                     <h1 className="text-3xl font-bold text-black">Admin - Catalog</h1>
                     <Link
@@ -19,6 +20,6 @@ export default function AdminPage() {
 
                 <AdminCatalogEditor />
             </div>
-        </main>
+        </PageLayout>
     );
 }

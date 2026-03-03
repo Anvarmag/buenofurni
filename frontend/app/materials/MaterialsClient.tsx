@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
+import FallbackImage from "@/components/ui/FallbackImage";
 import { useModal } from "@/app/providers";
 
 // Intersection Observer Hook for scroll reveal animations
@@ -90,7 +90,7 @@ export default function MaterialsClient() {
             {/* Hero */}
             <section className="relative w-full h-[80vh] min-h-[600px] flex items-center justify-center text-center px-4 overflow-hidden bg-black">
                 <div className="absolute inset-0 z-0">
-                    <Image
+                    <FallbackImage
                         src="/generated/materials_hero_macro_1772179379066.webp"
                         alt="Макро фактура премиальных материалов мебели"
                         fill
@@ -122,7 +122,7 @@ export default function MaterialsClient() {
                         <div className="w-full lg:w-1/2 order-1 lg:order-1">
                             <Reveal>
                                 <div className="relative aspect-square md:aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl">
-                                    <Image
+                                    <FallbackImage
                                         src="/generated/materials_birch_plywood_edge_1772179393601.webp"
                                         alt="Срез березовой фанеры крупным планом"
                                         fill
@@ -174,7 +174,7 @@ export default function MaterialsClient() {
                         <div className="w-full lg:w-1/2 order-1 lg:order-2">
                             <Reveal>
                                 <div className="relative aspect-square md:aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl">
-                                    <Image
+                                    <FallbackImage
                                         src="/generated/materials_veneer_grain_1772179408932.webp"
                                         alt="Фактура натурального шпона ореха"
                                         fill
@@ -197,7 +197,7 @@ export default function MaterialsClient() {
                     {/* General Samples Image */}
                     <Reveal delay={200}>
                         <div className="relative w-full h-[300px] md:h-[400px] rounded-3xl overflow-hidden mb-16 shadow-lg">
-                            <Image
+                            <FallbackImage
                                 src="/generated/materials_fabric_samples_1772143484127.webp"
                                 alt="Образцы обивочных тканей BUENOFURNI"
                                 fill
@@ -246,7 +246,7 @@ export default function MaterialsClient() {
                             <div className="w-full lg:w-1/2">
                                 <Reveal delay={200} key={activeTab + "-img"}>
                                     <div className="relative aspect-square lg:aspect-[4/3] rounded-3xl overflow-hidden shadow-lg border border-black/5">
-                                        <Image
+                                        <FallbackImage
                                             src={tabsData[activeTab].img}
                                             alt={`Фактура ткани ${tabsData[activeTab].title}`}
                                             fill

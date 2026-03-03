@@ -74,9 +74,9 @@ export async function POST(req: Request) {
         }
 
         return NextResponse.json({ ok: true }, { status: 200 });
-    } catch (e: any) {
+    } catch (e: unknown) {
         return NextResponse.json(
-            { ok: false, error: "unexpected_error", details: String(e?.message || e) },
+            { ok: false, error: "unexpected_error", details: e instanceof Error ? e.message : String(e) },
             { status: 500 }
         );
     }

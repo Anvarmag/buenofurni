@@ -2,15 +2,12 @@
 
 import { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { useModal } from "@/app/providers";
 import ProductGallery from "@/components/product/ProductGallery";
 import ImageZoomModal from "@/components/product/ImageZoomModal";
 import CatalogOrderModal from "@/components/modals/CatalogOrderModal";
 import { Product, UpholsteryType, LegsColorType, AvailabilityType, CategoryType, LegsMaterialType } from "../_data/products";
 
 export default function CatalogClient({ products }: { products: Product[] }) {
-    const { openModal } = useModal();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     // Filters state
@@ -69,7 +66,7 @@ export default function CatalogClient({ products }: { products: Product[] }) {
         );
     };
 
-    const FilterPanel = () => (
+    const renderFilterPanel = () => (
         <div className="bg-white rounded-2xl border border-black/10 shadow-sm p-6 flex flex-col gap-8">
             <div>
                 <h3 className="text-lg font-bold mb-4">Мебель</h3>
@@ -183,7 +180,7 @@ export default function CatalogClient({ products }: { products: Product[] }) {
 
                 {/* Desktop Sidebar */}
                 <aside className="hidden lg:block w-[320px] shrink-0 sticky top-[100px]">
-                    <FilterPanel />
+                    {renderFilterPanel()}
                 </aside>
 
                 {/* Main Content */}
@@ -237,7 +234,7 @@ export default function CatalogClient({ products }: { products: Product[] }) {
                                                 title: product.title
                                             });
                                         }}
-                                        className="absolute top-4 right-4 z-[40] w-10 h-10 bg-white/80 hover:bg-white backdrop-blur-sm rounded-full flex items-center justify-center text-black/70 hover:text-black opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all shadow-sm translate-y-0 lg:translate-y-2 lg:group-hover:translate-y-0"
+                                        className="zoom-control absolute top-4 right-4 z-[20] w-10 h-10 bg-white/80 hover:bg-white backdrop-blur-sm rounded-full flex items-center justify-center text-black/70 hover:text-black opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all shadow-sm translate-y-0 lg:translate-y-2 lg:group-hover:translate-y-0"
                                         aria-label="Увеличить фото"
                                     >
                                         <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -320,7 +317,7 @@ export default function CatalogClient({ products }: { products: Product[] }) {
 
                 {/* Scrollable Content */}
                 <div className="flex-1 overflow-y-auto px-6 py-8 pb-32">
-                    <FilterPanel />
+                    {renderFilterPanel()}
                 </div>
 
                 {/* Sticky footer CTA */}

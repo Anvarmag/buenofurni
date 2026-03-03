@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import MaterialsClient from './MaterialsClient';
+import PageLayout from "@/components/layout/PageLayout";
 
 export const metadata: Metadata = {
     title: 'Материалы и фактуры | Мебель из берёзовой фанеры и шпона BUENOFURNI',
@@ -11,8 +12,10 @@ export const metadata: Metadata = {
 
 export default function MaterialsPage() {
     return (
-        <main className="bg-[var(--background)] min-h-screen">
-            <MaterialsClient />
-        </main>
+        <PageLayout headerVariant="overlay">
+            <main className="bg-[var(--background)] min-h-screen">
+                <MaterialsClient />
+            </main>
+        </PageLayout>
     );
 }

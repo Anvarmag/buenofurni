@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import ProductionClient from './ProductionClient';
+import PageLayout from "@/components/layout/PageLayout";
 
 export const metadata: Metadata = {
     title: 'Собственное производство мебели и стульев | BUENOFURNI',
@@ -11,8 +12,10 @@ export const metadata: Metadata = {
 
 export default function ProductionPage() {
     return (
-        <main className="bg-[var(--background)]">
-            <ProductionClient />
-        </main>
+        <PageLayout headerVariant="overlay">
+            <main className="bg-[var(--background)]">
+                <ProductionClient />
+            </main>
+        </PageLayout>
     );
 }

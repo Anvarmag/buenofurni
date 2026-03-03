@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 export default function EditorComponent() {
     const router = useRouter();
 
-    const handleSave = async (productsData: any) => {
+    const handleSave = async (productsData: unknown[]) => {
         try {
             const response = await fetch('/api/admin/products', {
                 method: 'PUT',

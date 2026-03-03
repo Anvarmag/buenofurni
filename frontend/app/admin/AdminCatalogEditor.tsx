@@ -32,7 +32,7 @@ export default function AdminCatalogEditor() {
         fetchProducts();
     }, []);
 
-    const handleChange = (index: number, field: keyof Product, value: any) => {
+    const handleChange = (index: number, field: keyof Product, value: unknown) => {
         const newProducts = [...products];
         newProducts[index] = { ...newProducts[index], [field]: value };
         setProducts(newProducts);
@@ -87,9 +87,9 @@ export default function AdminCatalogEditor() {
             } else {
                 throw new Error(data.error || 'Failed to save');
             }
-        } catch (err: any) {
+        } catch (err: unknown) {
             console.error(err);
-            setMessage({ text: err.message || 'Ошибка сохранения', type: 'error' });
+            setMessage({ text: err instanceof Error ? err.message : 'Ошибка сохранения', type: 'error' });
         } finally {
             setSaving(false);
             setTimeout(() => setMessage(null), 3000);
@@ -189,7 +189,10 @@ export default function AdminCatalogEditor() {
                                 <div className="md:col-span-3 flex flex-col gap-3">
                                     <div className="aspect-square bg-gray-50 rounded-xl border border-gray-100 overflow-hidden relative group/img flex items-center justify-center">
                                         {product.imagePath ? (
-                                            <img src={product.imagePath} alt={product.title} className="w-full h-full object-contain p-4" />
+                                            <>
+                                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                                <img src={product.imagePath} alt={product.title} className="w-full h-full object-contain p-4" />
+                                            </>
                                         ) : (
                                             <span className="text-gray-400 text-sm font-medium">Нет фото</span>
                                         )}
@@ -250,6 +253,7 @@ export default function AdminCatalogEditor() {
                                             <div className="grid grid-cols-3 gap-2">
                                                 {product.galleryImages.map((imgPath, gIdx) => (
                                                     <div key={gIdx} className="aspect-square bg-white border border-gray-100 rounded-lg relative group/thumb overflow-hidden">
+                                                        {/* eslint-disable-next-line @next/next/no-img-element */}
                                                         <img src={imgPath} alt={`Gallery ${gIdx}`} className="w-full h-full object-cover" />
                                                         <button
                                                             onClick={() => {

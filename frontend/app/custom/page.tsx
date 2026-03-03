@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import CustomClient from './CustomClient';
+import PageLayout from "@/components/layout/PageLayout";
 
 export const metadata: Metadata = {
     title: 'Изготовление стульев на заказ | Мебель от BUENOFURNI',
@@ -11,8 +12,10 @@ export const metadata: Metadata = {
 
 export default function CustomPage() {
     return (
-        <main className="bg-[var(--background)]">
-            <CustomClient />
-        </main>
+        <PageLayout headerVariant="overlay">
+            <main className="bg-[var(--background)]">
+                <CustomClient />
+            </main>
+        </PageLayout>
     );
 }

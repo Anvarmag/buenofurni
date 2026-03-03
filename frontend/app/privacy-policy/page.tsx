@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import MarkdownPage from '../_components/MarkdownPage';
+import PageLayout from "@/components/layout/PageLayout";
 
 export const metadata: Metadata = {
     title: 'Политика конфиденциальности | BUENOFURNI',
@@ -8,8 +9,10 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicyPage() {
     return (
-        <main className="container min-h-screen py-12">
-            <MarkdownPage fileName="privacy-policy.md" />
-        </main>
+        <PageLayout headerVariant="default">
+            <div className="container py-12">
+                <MarkdownPage fileName="privacy-policy.md" />
+            </div>
+        </PageLayout>
     );
 }

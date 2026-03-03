@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import PageLayout from "@/components/layout/PageLayout";
 
 export const metadata: Metadata = {
     title: 'Контакты | BUENOFURNI',
@@ -7,8 +8,8 @@ export const metadata: Metadata = {
 
 export default function ContactsPage() {
     return (
-        <main className="bg-[var(--background)] min-h-screen pt-32 sm:pt-40 pb-20">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+        <PageLayout headerVariant="default">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl py-12 sm:py-20">
 
                 <div className="text-center mb-16 sm:mb-24">
                     <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-black mb-6">
@@ -74,6 +75,6 @@ export default function ContactsPage() {
 
                 </div>
             </div>
-        </main>
+        </PageLayout>
     );
 }

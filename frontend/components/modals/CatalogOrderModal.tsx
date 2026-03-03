@@ -39,7 +39,7 @@ export default function CatalogOrderModal({ isOpen, onClose, product }: CatalogO
     // Reset quantity when modal opens
     useEffect(() => {
         if (isOpen) {
-            setQuantity(1);
+            setTimeout(() => setQuantity(1), 0);
         }
     }, [isOpen]);
 

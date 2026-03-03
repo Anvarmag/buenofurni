@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import HorecaClient from './HorecaClient';
+import PageLayout from "@/components/layout/PageLayout";
 
 export const metadata: Metadata = {
     title: 'Стулья и мебель для кафе и ресторанов (HoReCa) | Производство BUENOFURNI',
@@ -11,8 +12,10 @@ export const metadata: Metadata = {
 
 export default function HorecaPage() {
     return (
-        <main className="bg-[var(--background)]">
-            <HorecaClient />
-        </main>
+        <PageLayout headerVariant="overlay">
+            <main className="bg-[var(--background)]">
+                <HorecaClient />
+            </main>
+        </PageLayout>
     );
 }

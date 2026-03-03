@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
+import FallbackImage from "@/components/ui/FallbackImage";
 import Link from "next/link";
 import { useModal } from "@/app/providers";
 
@@ -122,7 +122,7 @@ export default function ProductionClient() {
             {/* Hero Section */}
             <section className="relative w-full h-[85vh] min-h-[600px] flex items-center bg-black overflow-hidden px-4">
                 <div className="absolute inset-0 z-0">
-                    <Image
+                    <FallbackImage
                         src="/generated/production_hero_1772182848435.webp"
                         alt="Производственный цех BUENOFURNI мастерская"
                         fill
@@ -131,7 +131,7 @@ export default function ProductionClient() {
                         fetchPriority="high"
                     />
                     {/* Dark gradient for text readability and cinematic look */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-black/50 to-black/20 md:bg-gradient-to-r md:from-black/80 md:to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30 md:bg-gradient-to-r md:from-black/80 md:to-transparent"></div>
                 </div>
 
                 <div className="container relative z-10 w-full mt-20">
@@ -155,14 +155,14 @@ export default function ProductionClient() {
                                 {/* B2C Flow */}
                                 <button
                                     onClick={() => openModal('b2c', 'production_b2c')}
-                                    className="button-primary h-16 px-10 text-lg font-bold shadow-2xl w-full sm:w-auto hover:-translate-y-1 transition-transform"
+                                    className="button-primary h-16 px-6 sm:px-10 text-base sm:text-lg font-bold shadow-2xl w-full sm:w-auto hover:-translate-y-1 transition-transform whitespace-normal text-center leading-tight"
                                 >
                                     Оставить заявку
                                 </button>
                                 {/* B2B Flow */}
                                 <button
                                     onClick={() => openModal('b2b', 'production_b2b')}
-                                    className="button-secondary bg-white text-black border-transparent h-16 px-10 text-lg font-bold w-full sm:w-auto hover:bg-gray-100 hover:-translate-y-1 transition-transform shadow-xl"
+                                    className="button-secondary bg-white text-black border-transparent h-16 px-6 sm:px-10 text-base sm:text-lg font-bold w-full sm:w-auto hover:bg-gray-100 hover:-translate-y-1 transition-transform shadow-xl whitespace-normal text-center leading-tight"
                                 >
                                     HoReCa — получить КП
                                 </button>
@@ -197,7 +197,7 @@ export default function ProductionClient() {
                                     {/* Image Side */}
                                     <div className="w-full lg:w-1/2 z-10">
                                         <Reveal delay={100} className="relative aspect-square md:aspect-[4/3] rounded-[3rem] overflow-hidden shadow-2xl group border border-black/5">
-                                            <Image
+                                            <FallbackImage
                                                 src={stage.img}
                                                 alt={`Этап производства: ${stage.title}`}
                                                 fill
@@ -302,7 +302,7 @@ export default function ProductionClient() {
                         <div className="w-full md:w-1/2">
                             <Reveal>
                                 <div className="relative aspect-square rounded-full overflow-hidden shadow-xl border-4 border-white">
-                                    <Image
+                                    <FallbackImage
                                         src="/generated/prod_sustain_1772182921244.webp"
                                         alt="Экологичное мебельное производство макро"
                                         fill

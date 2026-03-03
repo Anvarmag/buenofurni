@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { useModal } from "@/app/providers";
 
 type ModalProps = {
     isOpen: boolean;
@@ -39,8 +38,10 @@ export default function BaseModal({
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = "hidden";
+            document.body.classList.add("has-overlay");
         } else {
             document.body.style.overflow = "";
+            document.body.classList.remove("has-overlay");
             setTimeout(() => setStatus("idle"), 300); // Wait for fade out animation
         }
     }, [isOpen]);
@@ -95,7 +96,7 @@ export default function BaseModal({
     }
 
     return (
-        <div className="fixed inset-0 z-[80] flex items-center justify-center p-4 sm:p-6 text-left">
+        <div className="fixed inset-0 z-[90] flex items-center justify-center p-4 sm:p-6 text-left">
             {/* Backdrop */}
             <div
                 className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity"

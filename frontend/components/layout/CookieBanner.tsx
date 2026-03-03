@@ -9,7 +9,7 @@ export default function CookieBanner() {
         // Check localStorage after mount to avoid hydration mismatch
         const consent = localStorage.getItem("buenofurni_cookie_consent");
         if (!consent) {
-            setShow(true);
+            setTimeout(() => setShow(true), 0);
         }
     }, []);
 

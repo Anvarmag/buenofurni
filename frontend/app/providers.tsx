@@ -26,11 +26,13 @@ export function ModalProvider({ children }: { children: ReactNode }) {
     const openModal = (type: "b2c" | "b2b", source = "organic") => {
         setModalState({ isOpen: true, type, source });
         document.body.style.overflow = "hidden"; // Prevent background scroll
+        document.body.classList.add("has-overlay");
     };
 
     const closeModal = () => {
         setModalState({ isOpen: false, type: null, source: "organic" });
         document.body.style.overflow = "auto";
+        document.body.classList.remove("has-overlay");
     };
 
     return (

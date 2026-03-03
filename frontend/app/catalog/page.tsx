@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { Product } from '../_data/products';
+import PageLayout from "@/components/layout/PageLayout";
 
 export const revalidate = 3600; // 1 hour caching for VPS offload
 
@@ -57,7 +58,7 @@ export default async function CatalogPage() {
     };
 
     return (
-        <main className="bg-[var(--background)]">
+        <PageLayout headerVariant="default">
             <Script
                 id="catalog-schema"
                 type="application/ld+json"
@@ -65,7 +66,7 @@ export default async function CatalogPage() {
             />
 
             {/* Compact Header */}
-            <section className="pt-32 pb-12 md:pt-40 md:pb-16 px-4 text-center border-b border-black/10">
+            <section className="pt-12 pb-12 md:pt-16 md:pb-16 px-4 text-center border-b border-black/10">
                 <div className="max-w-3xl mx-auto flex flex-col items-center">
                     <h1 className="text-4xl md:text-5xl font-bold text-black mb-4">Каталог</h1>
                     <p className="text-lg md:text-xl text-[var(--muted)] mb-8 font-medium">Собственное производство. Выбирайте ткань, цвет ножек и создавайте мебель под ваш интерьер.</p>
@@ -76,6 +77,6 @@ export default async function CatalogPage() {
             </section>
 
             <CatalogClient products={products} />
-        </main>
+        </PageLayout>
     );
 }

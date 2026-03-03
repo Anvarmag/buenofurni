@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import FallbackImage from "@/components/ui/FallbackImage";
 import { useModal } from "@/app/providers";
 
 export default function HorecaClient() {
@@ -67,7 +67,7 @@ export default function HorecaClient() {
             <section className="relative w-full min-h-[500px] md:min-h-[600px] flex items-center bg-[var(--background)] overflow-hidden">
                 <div className="absolute inset-0 w-full h-full lg:w-1/2 lg:right-0 lg:left-auto pt-24 lg:pt-0">
                     <div className="relative w-full h-full">
-                        <Image
+                        <FallbackImage
                             src="/generated/hero_chair_v3.webp"
                             alt="Интерьер ресторана с премиальной мебелью"
                             fill
@@ -141,7 +141,7 @@ export default function HorecaClient() {
                     <div className="flex overflow-x-auto pb-8 gap-4 md:gap-6 snap-x snap-mandatory hide-scrollbars md:grid md:grid-cols-2 xl:grid-cols-4 md:overflow-visible pr-4 md:pr-0">
                         {galleryImages.map((src, i) => (
                             <div key={i} className="relative min-w-[300px] sm:min-w-[400px] md:min-w-0 md:w-full aspect-[4/5] rounded-3xl overflow-hidden shadow-sm snap-center shrink-0">
-                                <Image
+                                <FallbackImage
                                     src={src}
                                     alt={`Проект HoReCa ${i + 1}`}
                                     fill
