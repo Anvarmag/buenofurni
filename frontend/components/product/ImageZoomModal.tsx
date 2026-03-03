@@ -48,7 +48,7 @@ export default function ImageZoomModal({ images, initialIndex = 0, onClose }: Im
     };
 
     return createPortal(
-        <div className="fixed inset-0 z-[200] flex items-center justify-center bg-[#050505] overflow-hidden overscroll-none touch-none animate-in fade-in duration-200">
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#050505] overflow-hidden overscroll-none touch-none animate-in fade-in duration-200">
             {/* Close Button */}
             <button
                 onClick={onClose}
