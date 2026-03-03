@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 
 type ImageZoomModalProps = {
@@ -11,6 +12,11 @@ type ImageZoomModalProps = {
 
 export default function ImageZoomModal({ images, initialIndex = 0, onClose }: ImageZoomModalProps) {
     const [activeIndex, setActiveIndex] = useState(initialIndex);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     // Lock body scroll when modal is open
     useEffect(() => {
@@ -31,7 +37,7 @@ export default function ImageZoomModal({ images, initialIndex = 0, onClose }: Im
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, [activeIndex, images.length]);
 
-    if (!images || images.length === 0) return null;
+    if (!mounted || !images || images.length === 0) return null;
 
     const handlePrev = () => {
         setActiveIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
@@ -41,7 +47,7 @@ export default function ImageZoomModal({ images, initialIndex = 0, onClose }: Im
         setActiveIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
     };
 
-    return (
+    return createPortal(
         <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/95 backdrop-blur-sm animate-in fade-in duration-200">
             {/* Close Button */}
             <button
@@ -112,6 +118,7 @@ export default function ImageZoomModal({ images, initialIndex = 0, onClose }: Im
                     </div>
                 </div>
             )}
-        </div>
+        </div>,
+        document.body
     );
 }

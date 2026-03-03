@@ -237,7 +237,7 @@ export default function CatalogClient({ products }: { products: Product[] }) {
                                                 title: product.title
                                             });
                                         }}
-                                        className="absolute top-4 right-4 z-20 w-10 h-10 bg-white/80 hover:bg-white backdrop-blur-sm rounded-full flex items-center justify-center text-black/70 hover:text-black opacity-0 group-hover:opacity-100 transition-all shadow-sm translate-y-2 group-hover:translate-y-0"
+                                        className="absolute top-4 right-4 z-20 w-10 h-10 bg-white/80 hover:bg-white backdrop-blur-sm rounded-full flex items-center justify-center text-black/70 hover:text-black opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all shadow-sm translate-y-0 lg:translate-y-2 lg:group-hover:translate-y-0"
                                         aria-label="Увеличить фото"
                                     >
                                         <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
