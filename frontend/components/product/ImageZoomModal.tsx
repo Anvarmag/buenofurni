@@ -48,7 +48,7 @@ export default function ImageZoomModal({ images, initialIndex = 0, onClose }: Im
     };
 
     return createPortal(
-        <div className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#050505] overflow-hidden overscroll-none touch-none animate-in fade-in duration-200">
+        <div className="fixed inset-0 z-[9999] bg-[#050505] overflow-hidden animate-in fade-in duration-200">
             {/* Close Button */}
             <button
                 onClick={onClose}
@@ -61,8 +61,8 @@ export default function ImageZoomModal({ images, initialIndex = 0, onClose }: Im
             </button>
 
             {/* Main Image Container */}
-            <div className="relative w-full flex-1 flex items-center justify-center px-4 md:px-16 pt-16 pb-32" onClick={onClose}>
-                <div onClick={(e) => e.stopPropagation()} className="relative w-full h-full max-w-6xl flex items-center justify-center">
+            <div className="absolute inset-0 z-0 flex items-center justify-center px-4 md:px-16 pt-16 pb-40" onClick={onClose}>
+                <div onClick={(e) => e.stopPropagation()} className="relative w-full h-full max-w-6xl">
                     <Image
                         src={images[activeIndex]}
                         alt={`Zoomed image ${activeIndex + 1}`}
@@ -70,7 +70,6 @@ export default function ImageZoomModal({ images, initialIndex = 0, onClose }: Im
                         sizes="100vw"
                         className="object-contain"
                         priority
-                        quality={90}
                     />
                 </div>
             </div>

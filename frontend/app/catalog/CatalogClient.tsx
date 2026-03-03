@@ -249,7 +249,7 @@ export default function CatalogClient({ products }: { products: Product[] }) {
                                         src={product.imagePath || "/placeholder.jpg"}
                                         alt={product.title}
                                         fill
-                                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                        sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                                         className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                                         priority={idx < 4}
                                         loading={idx < 4 ? undefined : "lazy"}
