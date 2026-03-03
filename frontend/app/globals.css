@@ -17,6 +17,14 @@
   --border: rgba(31, 31, 31, .12);
   --sa-top: env(safe-area-inset-top);
   --sa-bottom: env(safe-area-inset-bottom);
+  --header-base-h: 72px;
+  --header-h: calc(var(--header-base-h) + var(--sa-top));
+}
+
+@media (max-width: 768px) {
+  :root {
+    --header-base-h: 64px;
+  }
 }
 
 /* отключаем автоматический dark mode */

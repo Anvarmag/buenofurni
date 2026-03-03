@@ -35,9 +35,12 @@ export default function BaseModal({
         return () => window.removeEventListener("keydown", handleEsc);
     }, [onClose]);
 
-    // Reset status when modal closes so it's fresh for the next time
+    // Lock scroll and reset status when modal opens/closes
     useEffect(() => {
-        if (!isOpen) {
+        if (isOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
             setTimeout(() => setStatus("idle"), 300); // Wait for fade out animation
         }
     }, [isOpen]);
@@ -92,7 +95,7 @@ export default function BaseModal({
     }
 
     return (
-        <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 sm:p-6 text-left">
+        <div className="fixed inset-0 z-[80] flex items-center justify-center p-4 sm:p-6 text-left">
             {/* Backdrop */}
             <div
                 className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity"
@@ -104,7 +107,7 @@ export default function BaseModal({
             <div
                 role="dialog"
                 aria-modal="true"
-                className="relative w-full max-w-lg overflow-y-auto max-h-[calc(100dvh-24px)] rounded-3xl bg-[var(--background)] shadow-2xl animate-in fade-in zoom-in-95 duration-200"
+                className="relative z-[90] w-full max-w-lg overflow-y-auto max-h-[calc(100dvh-24px)] rounded-3xl bg-[var(--background)] shadow-2xl animate-in fade-in zoom-in-95 duration-200"
                 style={{ paddingBottom: 'max(24px, env(safe-area-inset-bottom))' }}
             >
                 <div className="px-6 py-8 sm:p-10">

@@ -7,6 +7,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import CookieBanner from "@/components/layout/CookieBanner";
 import ModalRoot from "@/components/ModalRoot";
+import ClientMainWrapper from "@/components/layout/ClientMainWrapper";
 
 const inter = Inter({
   subsets: ["latin", "cyrillic"],
@@ -103,9 +104,9 @@ export default function RootLayout({
       <body className="flex min-h-screen flex-col bg-[var(--background)] font-sans text-[var(--foreground)] antialiased selection:bg-[var(--accent)] selection:text-white">
         <ModalProvider>
           <Header />
-          <main className="flex-1 pt-[80px] md:pt-[92px]">
+          <ClientMainWrapper>
             {children}
-          </main>
+          </ClientMainWrapper>
           <Footer />
           <ModalRoot />
           <CookieBanner />

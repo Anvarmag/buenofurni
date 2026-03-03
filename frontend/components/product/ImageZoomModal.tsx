@@ -48,11 +48,11 @@ export default function ImageZoomModal({ images, initialIndex = 0, onClose }: Im
     };
 
     return createPortal(
-        <div className="fixed inset-0 z-[9999] bg-[#050505] overflow-hidden animate-in fade-in duration-200">
+        <div className="fixed inset-0 z-[70] bg-[#050505] overflow-hidden animate-in fade-in duration-200">
             {/* Close Button */}
             <button
                 onClick={onClose}
-                className="absolute top-4 right-4 md:top-6 md:right-6 z-[210] p-3 text-white/70 hover:text-white bg-black/50 hover:bg-black/80 rounded-full transition-all"
+                className="absolute top-4 right-4 md:top-6 md:right-6 z-[70] p-3 text-white/70 hover:text-white bg-black/50 hover:bg-black/80 rounded-full transition-all"
                 aria-label="Закрыть"
             >
                 <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -79,7 +79,7 @@ export default function ImageZoomModal({ images, initialIndex = 0, onClose }: Im
                 <>
                     <button
                         onClick={handlePrev}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 z-[210] p-3 md:p-4 text-white/70 hover:text-white bg-black/50 hover:bg-black/80 rounded-full transition-all"
+                        className="absolute left-4 top-1/2 -translate-y-1/2 z-[70] p-3 md:p-4 text-white/70 hover:text-white bg-black/50 hover:bg-black/80 rounded-full transition-all"
                         aria-label="Предыдущее фото"
                     >
                         <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -88,7 +88,7 @@ export default function ImageZoomModal({ images, initialIndex = 0, onClose }: Im
                     </button>
                     <button
                         onClick={handleNext}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 z-[210] p-3 md:p-4 text-white/70 hover:text-white bg-black/50 hover:bg-black/80 rounded-full transition-all"
+                        className="absolute right-4 top-1/2 -translate-y-1/2 z-[70] p-3 md:p-4 text-white/70 hover:text-white bg-black/50 hover:bg-black/80 rounded-full transition-all"
                         aria-label="Следующее фото"
                     >
                         <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -100,7 +100,7 @@ export default function ImageZoomModal({ images, initialIndex = 0, onClose }: Im
 
             {/* Image Counter & Thumbnails */}
             {images.length > 1 && (
-                <div className="absolute bottom-0 left-0 right-0 z-[210] flex flex-col items-center gap-4 w-full px-2 pb-[env(safe-area-inset-bottom,16px)] pointer-events-none">
+                <div className="absolute bottom-0 left-0 right-0 z-[70] flex flex-col items-center gap-4 w-full px-2 pb-[env(safe-area-inset-bottom,16px)] pointer-events-none">
                     <div className="bg-black/50 px-4 py-1.5 rounded-full text-white text-sm tracking-widest font-medium pointer-events-auto mt-4">
                         {activeIndex + 1} / {images.length}
                     </div>
