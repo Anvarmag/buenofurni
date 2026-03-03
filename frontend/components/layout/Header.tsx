@@ -22,8 +22,8 @@ export default function Header({ variant = "default" }: { variant?: "default" | 
 
     const isHorecaPage = pathname === "/horeca";
 
-    // Text should always be dark per design requirements (even on overlay)
-    const isDarkText = true;
+    // Text should be dark unless it's an overlay and we haven't scrolled yet
+    const isDarkText = variant === "overlay" ? scrolled || isMobileMenuOpen : true;
 
     // Handle scroll state for header styling
     useEffect(() => {
