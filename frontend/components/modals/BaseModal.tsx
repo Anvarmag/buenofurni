@@ -44,6 +44,11 @@ export default function BaseModal({
             document.body.classList.remove("has-overlay");
             setTimeout(() => setStatus("idle"), 300); // Wait for fade out animation
         }
+
+        return () => {
+            document.body.style.overflow = "";
+            document.body.classList.remove("has-overlay");
+        };
     }, [isOpen]);
 
     if (!isOpen) return null;

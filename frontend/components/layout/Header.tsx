@@ -22,8 +22,8 @@ export default function Header({ variant = "default" }: { variant?: "default" | 
 
     const isHorecaPage = pathname === "/horeca";
 
-    // Text should be dark if scrolled, if mobile menu is open, or if it's NOT an overlay header
-    const isDarkText = scrolled || isMobileMenuOpen || variant === "default";
+    // Text should always be dark per design requirements (even on overlay)
+    const isDarkText = true;
 
     // Handle scroll state for header styling
     useEffect(() => {
@@ -40,9 +40,14 @@ export default function Header({ variant = "default" }: { variant?: "default" | 
             document.body.style.overflow = "hidden";
             document.body.classList.add("has-overlay");
         } else {
-            document.body.style.overflow = "auto";
+            document.body.style.overflow = "";
             document.body.classList.remove("has-overlay");
         }
+
+        return () => {
+            document.body.style.overflow = "";
+            document.body.classList.remove("has-overlay");
+        };
     }, [isMobileMenuOpen]);
 
     // Determine CTA behavior based on route
@@ -58,9 +63,9 @@ export default function Header({ variant = "default" }: { variant?: "default" | 
         <>
             <header
                 className={`fixed inset-x-0 top-0 h-[var(--header-h)] transition-all duration-300 ${isMobileMenuOpen ? "z-[110] bg-transparent" : `z-[50] ${scrolled
-                            ? "bg-[var(--background)]/95 backdrop-blur-md shadow-sm border-b border-black/10"
-                            : variant === "overlay" ? "bg-transparent" : "bg-[var(--background)]"
-                        }`
+                    ? "bg-[var(--background)]/95 backdrop-blur-md shadow-sm border-b border-black/10"
+                    : variant === "overlay" ? "bg-transparent" : "bg-[var(--background)]"
+                    }`
                     }`}
                 style={{ paddingTop: 'var(--sa-top, 0px)' }}
             >

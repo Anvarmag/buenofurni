@@ -31,7 +31,7 @@ export function ModalProvider({ children }: { children: ReactNode }) {
 
     const closeModal = () => {
         setModalState({ isOpen: false, type: null, source: "organic" });
-        document.body.style.overflow = "auto";
+        document.body.style.overflow = "";
         document.body.classList.remove("has-overlay");
     };
 

@@ -38,14 +38,21 @@ export default function CatalogClient({ products }: { products: Product[] }) {
         });
     }, [products, selectedCategories, selectedUpholstery, selectedLegs, selectedLegsMaterial, availability]);
 
-    // Prevent scrolling when mobile filter is open
+    // Prevent scrolling when mobile filter or product modal is open
     useEffect(() => {
-        if (isMobileMenuOpen) {
+        if (isMobileMenuOpen || selectedProduct) {
             document.body.style.overflow = "hidden";
+            document.body.classList.add("has-overlay");
         } else {
-            document.body.style.overflow = "auto";
+            document.body.style.overflow = "";
+            document.body.classList.remove("has-overlay");
         }
-    }, [isMobileMenuOpen]);
+
+        return () => {
+            document.body.style.overflow = "";
+            document.body.classList.remove("has-overlay");
+        };
+    }, [isMobileMenuOpen, selectedProduct]);
 
     // Handlers
     const toggleCategory = (val: CategoryType) => {
@@ -186,7 +193,7 @@ export default function CatalogClient({ products }: { products: Product[] }) {
                 {/* Main Content */}
                 <div className="flex-1 w-full">
                     {/* Mobile Filter Trigger */}
-                    <div className="lg:hidden mb-6 sticky top-[80px] z-20 bg-[var(--background)] py-2">
+                    <div className="lg:hidden mb-6 sticky top-[80px] z-[30] bg-[var(--background)] py-2">
                         <button
                             onClick={() => setIsMobileMenuOpen(true)}
                             className="w-full flex justify-between items-center bg-white border border-black/10 px-6 py-4 rounded-xl shadow-sm text-lg font-medium"
@@ -224,7 +231,6 @@ export default function CatalogClient({ products }: { products: Product[] }) {
                                         aria-label={`Подробнее о ${product.title}`}
                                     />
 
-                                    {/* Zoom Button (visible on hover) */}
                                     <button
                                         type="button"
                                         onClick={(e) => {
@@ -234,7 +240,7 @@ export default function CatalogClient({ products }: { products: Product[] }) {
                                                 title: product.title
                                             });
                                         }}
-                                        className="zoom-control absolute top-4 right-4 z-[20] w-10 h-10 bg-white/80 hover:bg-white backdrop-blur-sm rounded-full flex items-center justify-center text-black/70 hover:text-black opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all shadow-sm translate-y-0 lg:translate-y-2 lg:group-hover:translate-y-0"
+                                        className="zoom-control absolute top-4 right-4 z-[10] w-10 h-10 bg-white/80 hover:bg-white backdrop-blur-sm rounded-full flex items-center justify-center text-black/70 hover:text-black opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all shadow-sm translate-y-0 lg:translate-y-2 lg:group-hover:translate-y-0"
                                         aria-label="Увеличить фото"
                                     >
                                         <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
