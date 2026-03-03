@@ -48,7 +48,7 @@ export default function ImageZoomModal({ images, initialIndex = 0, onClose }: Im
     };
 
     return createPortal(
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#050505] overflow-hidden overscroll-none touch-none animate-in fade-in duration-200">
+        <div className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#050505] overflow-hidden overscroll-none touch-none animate-in fade-in duration-200">
             {/* Close Button */}
             <button
                 onClick={onClose}
@@ -61,7 +61,7 @@ export default function ImageZoomModal({ images, initialIndex = 0, onClose }: Im
             </button>
 
             {/* Main Image Container */}
-            <div className="relative w-full h-[80vh] flex items-center justify-center px-4 md:px-16" onClick={onClose}>
+            <div className="relative w-full flex-1 flex items-center justify-center px-4 md:px-16 pt-16 pb-32" onClick={onClose}>
                 <div onClick={(e) => e.stopPropagation()} className="relative w-full h-full max-w-6xl flex items-center justify-center">
                     <Image
                         src={images[activeIndex]}
@@ -101,11 +101,11 @@ export default function ImageZoomModal({ images, initialIndex = 0, onClose }: Im
 
             {/* Image Counter & Thumbnails */}
             {images.length > 1 && (
-                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-[210] flex flex-col items-center gap-4">
-                    <div className="bg-black/50 px-4 py-1.5 rounded-full text-white text-sm tracking-widest font-medium">
+                <div className="absolute bottom-0 left-0 right-0 z-[210] flex flex-col items-center gap-4 w-full px-2 pb-[env(safe-area-inset-bottom,16px)] pointer-events-none">
+                    <div className="bg-black/50 px-4 py-1.5 rounded-full text-white text-sm tracking-widest font-medium pointer-events-auto mt-4">
                         {activeIndex + 1} / {images.length}
                     </div>
-                    <div className="flex gap-2 max-w-[90vw] overflow-x-auto pb-2 scrollbar-none">
+                    <div className="flex gap-2 max-w-[100vw] overflow-x-auto pb-4 scrollbar-none pointer-events-auto px-4">
                         {images.map((img, idx) => (
                             <button
                                 key={idx}
