@@ -33,19 +33,16 @@ export default function ProductGallery({
             <div className="flex flex-col gap-2 h-full">
                 {/* Main Image */}
                 <div
-                    className="relative w-full flex-1 bg-transparent overflow-hidden min-h-[200px] cursor-zoom-in group"
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        setIsZoomOpen(true);
-                    }}
+                    className="relative w-full flex-1 bg-transparent overflow-hidden min-h-[200px] group"
                 >
                     <Image
                         src={images[activeIndex]}
                         alt={`${title} - вид ${activeIndex + 1}`}
                         fill
                         sizes="(max-width: 768px) 100vw, 50vw"
-                        className="object-contain transition-opacity duration-300 group-hover:scale-[1.02]"
+                        className="object-contain transition-opacity duration-300 group-hover:scale-[1.02] cursor-zoom-in"
                         priority
+                        onClick={() => setIsZoomOpen(true)}
                     />
 
                     {/* Badges Overlay */}

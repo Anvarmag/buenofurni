@@ -59,7 +59,9 @@ export default function Header() {
     return (
         <>
             <header
-                className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ${scrolled ? "bg-[var(--background)]/90 backdrop-blur-md border-b border-black/10 py-3" : "bg-transparent py-5"
+                className={`fixed inset-x-0 top-0 z-[9999] transition-all duration-300 ${scrolled
+                        ? "bg-[var(--background)]/95 backdrop-blur-md border-b border-black/10 py-3"
+                        : isDarkHeroPage ? "bg-transparent py-5" : "bg-[var(--background)] py-5"
                     }`}
             >
                 <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
