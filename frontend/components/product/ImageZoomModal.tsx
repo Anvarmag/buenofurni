@@ -48,7 +48,7 @@ export default function ImageZoomModal({ images, initialIndex = 0, onClose }: Im
     };
 
     return createPortal(
-        <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/95 backdrop-blur-sm animate-in fade-in duration-200">
+        <div className="fixed inset-0 z-[200] flex items-center justify-center bg-[#050505] overflow-hidden overscroll-none touch-none animate-in fade-in duration-200">
             {/* Close Button */}
             <button
                 onClick={onClose}
@@ -67,9 +67,10 @@ export default function ImageZoomModal({ images, initialIndex = 0, onClose }: Im
                         src={images[activeIndex]}
                         alt={`Zoomed image ${activeIndex + 1}`}
                         fill
+                        sizes="100vw"
                         className="object-contain"
                         priority
-                        quality={100}
+                        quality={90}
                     />
                 </div>
             </div>
@@ -101,7 +102,7 @@ export default function ImageZoomModal({ images, initialIndex = 0, onClose }: Im
             {/* Image Counter & Thumbnails */}
             {images.length > 1 && (
                 <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-[210] flex flex-col items-center gap-4">
-                    <div className="bg-black/50 backdrop-blur px-4 py-1.5 rounded-full text-white text-sm tracking-widest font-medium">
+                    <div className="bg-black/50 px-4 py-1.5 rounded-full text-white text-sm tracking-widest font-medium">
                         {activeIndex + 1} / {images.length}
                     </div>
                     <div className="flex gap-2 max-w-[90vw] overflow-x-auto pb-2 scrollbar-none">
@@ -112,7 +113,13 @@ export default function ImageZoomModal({ images, initialIndex = 0, onClose }: Im
                                 className={`relative w-16 h-16 shrink-0 rounded-md overflow-hidden transition-all duration-200 border-2 ${idx === activeIndex ? "border-white scale-110 opacity-100" : "border-transparent opacity-40 hover:opacity-100"
                                     }`}
                             >
-                                <Image src={img} alt={`Thumbnail ${idx + 1}`} fill className="object-cover" />
+                                <Image
+                                    src={img}
+                                    alt={`Thumbnail ${idx + 1}`}
+                                    fill
+                                    sizes="64px"
+                                    className="object-cover"
+                                />
                             </button>
                         ))}
                     </div>

@@ -40,6 +40,7 @@ export default function ProductGallery({
                         src={images[activeIndex]}
                         alt={`${title} - вид ${activeIndex + 1}`}
                         fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
                         className="object-contain transition-opacity duration-300 group-hover:scale-[1.02]"
                         priority
                     />
@@ -70,14 +71,15 @@ export default function ProductGallery({
                                 key={idx}
                                 onClick={() => setActiveIndex(idx)}
                                 className={`relative aspect-square rounded-lg overflow-hidden border-2 transition-all ${activeIndex === idx
-                                        ? "border-[var(--accent)] opacity-100"
-                                        : "border-transparent opacity-60 hover:opacity-100 bg-gray-100"
+                                    ? "border-[var(--accent)] opacity-100"
+                                    : "border-transparent opacity-60 hover:opacity-100 bg-gray-100"
                                     }`}
                             >
                                 <Image
                                     src={img}
                                     alt={`Thumbnail ${idx + 1}`}
                                     fill
+                                    sizes="(max-width: 640px) 25vw, 150px"
                                     className="object-cover"
                                 />
                             </button>
