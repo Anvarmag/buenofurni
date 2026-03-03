@@ -20,10 +20,12 @@ export default function Header({ variant = "default" }: { variant?: "default" | 
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
+    const isHomePage = pathname === "/";
     const isHorecaPage = pathname === "/horeca";
 
-    // Text should be dark unless it's an overlay and we haven't scrolled yet
-    const isDarkText = variant === "overlay" ? scrolled || isMobileMenuOpen : true;
+    // Text should be dark unless it's an overlay on specific pages (Custom, Materials, Production) and we haven't scrolled yet.
+    // Home and HoReCa use overlay but have light backgrounds, so text must be dark.
+    const isDarkText = variant === "overlay" && !isHomePage && !isHorecaPage ? scrolled || isMobileMenuOpen : true;
 
     // Handle scroll state for header styling
     useEffect(() => {
