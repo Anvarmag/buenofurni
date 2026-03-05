@@ -18,6 +18,7 @@ export interface Product {
     imagePath: string;
     galleryImages?: string[];
     shortDescription: string;
+    sku?: string;
     tags?: string[];
 }
 

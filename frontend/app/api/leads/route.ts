@@ -13,6 +13,7 @@ type Body = {
     leadType?: string;
     source?: string;
     pageUrl?: string;
+    sku?: string;
 };
 
 function clean(s: string, max = 80) {
@@ -46,6 +47,7 @@ export async function POST(req: Request) {
             `Телефон: ${phone}\n`;
 
         if (body.productTitle) text += `Товар: ${clean(body.productTitle, 100)}\n`;
+        if (body.sku) text += `Артикул: ${clean(body.sku, 50)}\n`;
         if (body.productDetails) text += `Опции: ${clean(body.productDetails, 200)}\n`;
         if (body.quantity) text += `Количество: ${clean(body.quantity)}\n`;
         if (body.totalPrice) text += `Сумма: ${clean(body.totalPrice)}\n`;

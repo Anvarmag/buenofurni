@@ -186,7 +186,7 @@ export default function CatalogClient({ products }: { products: Product[] }) {
             <div className="container py-8 lg:py-12 flex flex-col lg:flex-row gap-8 lg:gap-12 relative items-start">
 
                 {/* Desktop Sidebar */}
-                <aside className="hidden lg:block w-[320px] shrink-0 sticky top-[100px]">
+                <aside className="hidden lg:block w-[320px] shrink-0 sticky top-[100px] max-h-[calc(100vh-140px)] overflow-y-auto pr-2 custom-scrollbar">
                     {renderFilterPanel()}
                 </aside>
 
@@ -377,6 +377,9 @@ export default function CatalogClient({ products }: { products: Product[] }) {
                         {/* Content side */}
                         <div className="w-full md:w-1/2 p-5 md:p-8 flex flex-col overflow-y-auto">
                             <h2 className="text-2xl font-bold text-gray-900 mb-2 pr-8">{selectedProduct.title}</h2>
+                            {selectedProduct.sku && (
+                                <span className="text-[10px] text-gray-400 uppercase tracking-wider block mb-2">Артикул: {selectedProduct.sku}</span>
+                            )}
                             <p className="text-[13px] text-gray-600 mb-4 line-clamp-3 leading-relaxed">{selectedProduct.shortDescription}</p>
 
                             <div className="mb-6">

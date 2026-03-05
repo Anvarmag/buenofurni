@@ -47,6 +47,7 @@ export default function CatalogOrderModal({ isOpen, onClose, product }: CatalogO
 
     const totalPrice = product.priceFrom * quantity;
     const details = [
+        product.sku ? `Арт: ${product.sku}` : null,
         product.category,
         product.upholstery,
         product.legsMaterial,
@@ -65,6 +66,7 @@ export default function CatalogOrderModal({ isOpen, onClose, product }: CatalogO
             {/* Hidden fields for TG submission */}
             <input type="hidden" name="productTitle" value={product.title} />
             <input type="hidden" name="productDetails" value={details} />
+            <input type="hidden" name="sku" value={product.sku || ''} />
             <input type="hidden" name="quantity" value={quantity} />
             <input type="hidden" name="totalPrice" value={`${totalPrice.toLocaleString('ru-RU')} ₽`} />
 

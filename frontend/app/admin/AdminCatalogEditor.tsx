@@ -110,7 +110,8 @@ export default function AdminCatalogEditor() {
             legsMaterial: 'Березовая фанера',
             legsColor: 'Орех',
             imagePath: '',
-            shortDescription: ''
+            shortDescription: '',
+            sku: ''
         };
         setProducts([newProduct, ...products]);
     };
@@ -285,6 +286,17 @@ export default function AdminCatalogEditor() {
                                             onChange={(e) => handleChange(idx, 'title', e.target.value)}
                                             className="w-full border-b border-gray-200 hover:border-gray-300 bg-transparent px-0 py-1 text-lg font-bold text-black focus:border-black outline-none transition-colors"
                                             placeholder="Введите название..."
+                                        />
+                                    </div>
+
+                                    <div className="space-y-1">
+                                        <label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Артикул</label>
+                                        <input
+                                            type="text"
+                                            value={product.sku || ''}
+                                            onChange={(e) => handleChange(idx, 'sku', e.target.value)}
+                                            className="w-full border-b border-gray-200 hover:border-gray-300 bg-transparent px-0 py-1 text-sm font-medium text-black focus:border-black outline-none transition-colors"
+                                            placeholder="Напр. BF-101..."
                                         />
                                     </div>
 
