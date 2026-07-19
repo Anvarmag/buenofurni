@@ -2,6 +2,7 @@ import { MetadataRoute } from 'next';
 import fs from 'fs';
 import path from 'path';
 import { Product } from './_data/products';
+import { getAllArticles } from './_data/blog';
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://buenofurni.ru';
@@ -10,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const staticRoutes = [
         '',
         '/catalog',
+        '/blog',
         '/horeca',
         '/custom',
         '/materials',
@@ -43,7 +45,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
             return result;
         });
 
-        return [...staticRoutes, ...dynamicRoutes];
+        // Blog Article Routes
+        const blogRoutes = getAllArticles().map((article) => ({
+            url: `${baseUrl}/blog/${article.slug}`,
+            lastModified: article.date ? new Date(article.date).toISOString() : new Date().toISOString(),
+            changeFrequency: 'monthly' as const,
+            priority: 0.7,
+        }));
+
+        return [...staticRoutes, ...dynamicRoutes, ...blogRoutes];
     } catch {
         // Fallback if products.json fails to read during build
         return staticRoutes;

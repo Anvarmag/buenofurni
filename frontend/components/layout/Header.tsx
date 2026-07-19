@@ -11,6 +11,7 @@ const NAV_LINKS = [
     { href: "/custom", label: "На заказ" },
     { href: "/materials", label: "Материалы" },
     { href: "/production", label: "Производство" },
+    { href: "/blog", label: "Блог" },
     { href: "/contacts", label: "Контакты" },
 ];
 

@@ -28,9 +28,10 @@ export async function generateStaticParams() {
 
 export const revalidate = 3600; // 1 hour caching for VPS offload
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+    const { slug } = await params;
     const products = await getProducts();
-    const product = products.find(p => p.slug === params.slug);
+    const product = products.find(p => p.slug === slug);
 
     if (!product) {
         return { title: 'Товар не найден' };
@@ -58,9 +59,10 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     };
 }
 
-export default async function ProductPage({ params }: { params: { slug: string } }) {
+export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
     const products = await getProducts();
-    const product = products.find(p => p.slug === params.slug);
+    const product = products.find(p => p.slug === slug);
 
     if (!product) {
         notFound();
