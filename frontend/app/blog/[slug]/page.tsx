@@ -2,12 +2,27 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Script from 'next/script';
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown, { type Components } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import PageLayout from '@/components/layout/PageLayout';
 import { getAllArticles, getArticle } from '../../_data/blog';
 
 const BASE = 'https://buenofurni.ru';
+
+// Картинки внутри текста статьи — центрируем и держим «нормальный» размер,
+// чтобы вертикальные фото не занимали весь экран.
+const markdownComponents: Components = {
+    img: ({ src, alt }) =>
+        src ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+                src={typeof src === 'string' ? src : undefined}
+                alt={alt || ''}
+                loading="lazy"
+                className="mx-auto my-8 max-h-[420px] w-auto max-w-full rounded-xl shadow-sm"
+            />
+        ) : null,
+};
 
 export async function generateStaticParams() {
     return getAllArticles().map((article) => ({ slug: article.slug }));
@@ -128,12 +143,14 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                         <img
                             src={article.cover}
                             alt={article.coverAlt || article.title}
-                            className="mx-auto mb-8 max-h-[620px] w-auto rounded-2xl shadow-sm"
+                            className="mx-auto mb-8 max-h-[480px] w-auto max-w-full rounded-2xl shadow-sm"
                         />
                     )}
 
                     <article className="prose prose-neutral lg:prose-lg max-w-none break-words marker:text-[var(--accent)] prose-headings:font-bold prose-headings:text-[var(--foreground)] prose-a:text-[var(--accent-wood)] hover:prose-a:opacity-80 prose-img:rounded-xl prose-strong:text-[var(--foreground)]">
-                        <ReactMarkdown remarkPlugins={[remarkGfm]}>{article.body}</ReactMarkdown>
+                        <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
+                            {article.body}
+                        </ReactMarkdown>
                     </article>
 
                     {/* CTA к заявке */}
