@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import PageLayout from "@/components/layout/PageLayout";
+import ContactForm from "./ContactForm";
 
 export const metadata: Metadata = {
     title: 'Контакты | BUENOFURNI',
@@ -73,6 +74,11 @@ export default function ContactsPage() {
                         </div>
                     </div>
 
+                </div>
+
+                {/* Форма заявки */}
+                <div className="mt-16 sm:mt-24 max-w-3xl mx-auto">
+                    <ContactForm />
                 </div>
             </div>
         </PageLayout>

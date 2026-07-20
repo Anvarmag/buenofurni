@@ -26,9 +26,11 @@ export default function BlogPage() {
         <PageLayout>
             <main className="bg-[var(--background)] min-h-screen">
                 <div className="container py-12 sm:py-16">
-                    <header className="max-w-2xl mb-10 sm:mb-14">
-                        <h1 className="text-4xl sm:text-5xl font-bold text-[var(--foreground)]">Блог</h1>
-                        <p className="mt-4 text-lg text-[var(--muted)]">
+                    <header className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+                        <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-[var(--foreground)]">
+                            Блог
+                        </h1>
+                        <p className="mt-6 text-lg text-[var(--muted)] leading-relaxed">
                             Как выбрать мебель, из чего складывается цена и сроки, чем отличаются материалы —
                             по делу, от производителя.
                         </p>
