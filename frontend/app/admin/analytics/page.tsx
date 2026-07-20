@@ -69,6 +69,27 @@ function Bar({ label, value, max, suffix }: { label: string; value: number; max:
     );
 }
 
+/**
+ * Достраивает непрерывный ряд из последних N дней: дни без трафика
+ * должны быть видны нулями, иначе один день растягивается на весь график.
+ */
+function buildDays(
+    byDay: { day: string; views: number; visits: number }[],
+    count = 14,
+): { day: string; views: number; visits: number }[] {
+    const map = new Map(byDay.map((d) => [d.day, d]));
+    const now = new Date();
+    const todayUtc = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+    const out: { day: string; views: number; visits: number }[] = [];
+
+    for (let i = count - 1; i >= 0; i--) {
+        const key = new Date(todayUtc - i * 864e5).toISOString().slice(0, 10);
+        const found = map.get(key);
+        out.push({ day: key, views: found?.views ?? 0, visits: found?.visits ?? 0 });
+    }
+    return out;
+}
+
 function formatTime(iso: string): string {
     const d = new Date(iso);
     if (isNaN(d.getTime())) return iso;
@@ -84,7 +105,8 @@ export default async function AdminAnalyticsPage({
     const period: Period = (['today', '7d', '30d', 'all'] as const).includes(p as Period) ? (p as Period) : '7d';
     const data = await getAnalytics(period);
 
-    const maxDay = data ? Math.max(1, ...data.byDay.map((d) => d.views)) : 1;
+    const days = data ? buildDays(data.byDay, 14) : [];
+    const maxDay = Math.max(1, ...days.map((d) => d.views));
     const maxPage = data ? Math.max(1, ...data.topPages.map((d) => d.views)) : 1;
     const maxSource = data ? Math.max(1, ...data.sources.map((d) => d.views)) : 1;
     const maxRef = data ? Math.max(1, ...data.referrers.map((d) => d.views)) : 1;
@@ -128,22 +150,22 @@ export default async function AdminAnalyticsPage({
 
                     {/* График по дням */}
                     <Card title="Просмотры по дням (14 дней)">
-                        {data.byDay.length === 0 ? (
-                            <p className="text-sm text-black/40">Пока нет данных.</p>
-                        ) : (
-                            <div className="flex h-40 items-end gap-1 overflow-x-auto">
-                                {data.byDay.map((d) => (
-                                    <div key={d.day} className="flex min-w-[28px] flex-1 flex-col items-center gap-1" title={`${d.day}: ${d.views} просмотров, ${d.visits} визитов`}>
-                                        <span className="text-[10px] tabular-nums text-black/40">{d.views}</span>
-                                        <div
-                                            className="w-full rounded-t bg-[#141C26]"
-                                            style={{ height: `${Math.max(4, (d.views / maxDay) * 110)}px` }}
-                                        />
-                                        <span className="text-[10px] text-black/40">{d.day.slice(5)}</span>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
+                        <div className="flex h-40 items-end justify-start gap-2 overflow-x-auto">
+                            {days.map((d) => (
+                                <div
+                                    key={d.day}
+                                    className="flex w-10 shrink-0 flex-col items-center gap-1"
+                                    title={`${d.day}: ${d.views} просмотров, ${d.visits} визитов`}
+                                >
+                                    <span className="text-[10px] tabular-nums text-black/40">{d.views || ''}</span>
+                                    <div
+                                        className={`w-full rounded-t ${d.views > 0 ? 'bg-[#141C26]' : 'bg-black/10'}`}
+                                        style={{ height: `${d.views > 0 ? Math.max(6, (d.views / maxDay) * 110) : 3}px` }}
+                                    />
+                                    <span className="text-[10px] text-black/40">{d.day.slice(5)}</span>
+                                </div>
+                            ))}
+                        </div>
                     </Card>
 
                     <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
