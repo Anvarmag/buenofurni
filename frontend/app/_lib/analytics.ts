@@ -1,12 +1,11 @@
-// Отправка целей в Яндекс.Метрику.
-// Счётчик может быть не загружен (блокировщик, медленная сеть, SSR) —
-// в этом случае вызов молча игнорируется: аналитика не должна ломать интерфейс.
+// Аналитика: цели уходят в Яндекс.Метрику И в собственную базу (/api/track).
+// Любой сбой здесь молча игнорируется — аналитика не должна ломать интерфейс.
 
 const METRIKA_ID = 107082264;
 
 /**
- * Цели, которые заводятся в интерфейсе Метрики (тип «JavaScript-событие»,
- * идентификатор цели = строка ниже).
+ * Цели. В Метрике заводятся вручную (тип «JavaScript-событие»,
+ * идентификатор = строка ниже), в свою базу пишутся автоматически.
  */
 export type GoalName =
     | 'lead'            // отправлена заявка (B2C)
@@ -21,11 +20,43 @@ declare global {
     }
 }
 
-export function reachGoal(goal: GoalName, params?: Record<string, unknown>): void {
-    if (typeof window === 'undefined' || typeof window.ym !== 'function') return;
+/** Отправка «в один конец»: переживает уход со страницы. */
+function post(url: string, data: unknown): void {
+    if (typeof window === 'undefined') return;
     try {
-        window.ym(METRIKA_ID, 'reachGoal', goal, params);
+        const body = JSON.stringify(data);
+        if (typeof navigator !== 'undefined' && typeof navigator.sendBeacon === 'function') {
+            navigator.sendBeacon(url, new Blob([body], { type: 'application/json' }));
+            return;
+        }
+        fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body,
+            keepalive: true,
+            credentials: 'same-origin',
+        }).catch(() => { });
     } catch {
-        // молча игнорируем — сбой аналитики не должен влиять на пользователя
+        // тишина
     }
+}
+
+/** Просмотр страницы — в собственную аналитику. */
+export function trackPageView(path: string, referrer: string): void {
+    post('/api/track', { path, referrer });
+}
+
+/** Цель — в Метрику и в собственную аналитику. */
+export function reachGoal(goal: GoalName, params?: Record<string, unknown>): void {
+    if (typeof window === 'undefined') return;
+
+    try {
+        if (typeof window.ym === 'function') {
+            window.ym(METRIKA_ID, 'reachGoal', goal, params);
+        }
+    } catch {
+        // Метрика могла не загрузиться (блокировщик) — не мешаем дальше
+    }
+
+    post('/api/track/event', { name: goal, path: window.location.pathname });
 }

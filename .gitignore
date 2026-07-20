@@ -13,3 +13,6 @@ server/node_modules
 content/photos/*
 !content/photos/PHOTOS.md
 !content/photos/.keep
+
+# База аналитики и заявок — живые данные, только на сервере
+server/data/

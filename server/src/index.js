@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
 import leadsRouter from './routes/leads.js';
+import trackRouter from './routes/track.js';
 
 // Загрузка переменных окружения из файла .env
 dotenv.config();
@@ -34,6 +35,17 @@ const limiter = rateLimit({
     standardHeaders: 'draft-7',
     legacyHeaders: false,
 });
+
+// Трекер аналитики регистрируем ДО общего лимитера: посетитель за визит
+// открывает много страниц, и лимит в 30 запросов/10 мин обрезал бы статистику.
+// У самого трекера защита своя: отсев ботов и запись только валидных путей.
+const trackLimiter = rateLimit({
+    windowMs: 10 * 60 * 1000,
+    limit: 300,
+    standardHeaders: 'draft-7',
+    legacyHeaders: false,
+});
+app.use('/api/track', trackLimiter, trackRouter);
 
 // Применение лимита скорости для всех путей, начинающихся с /api/
 app.use('/api/', limiter);
