@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import { reachGoal } from "@/app/_lib/analytics";
 
 type ModalProps = {
     isOpen: boolean;
@@ -88,14 +89,16 @@ export default function BaseModal({
                 setStatus("success");
                 setErrorMessage("");
                 formRef.current?.reset();
+                // Цель в Метрике: заявка отправлена (главная конверсия сайта)
+                reachGoal(leadType === "b2b" ? "lead_b2b" : "lead", { source });
             } else {
                 const errorData = await response.json().catch(() => ({}));
-                setErrorMessage(errorData.error || "Произошла ошибка при отправке заявки. Пожалуйста, напишите нам в WhatsApp или Telegram.");
+                setErrorMessage(errorData.error || "Не удалось отправить заявку. Напишите нам в Telegram или позвоните: +7 993 094-08-07.");
                 setStatus("error");
             }
         } catch (error) {
             console.error(error);
-            setErrorMessage("Произошла серверная ошибка. Пожалуйста, напишите нам в WhatsApp или Telegram.");
+            setErrorMessage("Сервер не ответил. Напишите нам в Telegram или позвоните: +7 993 094-08-07.");
             setStatus("error");
         }
     }

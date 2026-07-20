@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             description: article.description,
             url: `${BASE}/blog/${article.slug}`,
             type: 'article',
-            images: article.cover ? [{ url: article.cover, alt: article.title }] : undefined,
+            images: article.cover ? [{ url: article.cover, alt: article.coverAlt || article.title }] : undefined,
         },
     };
 }
@@ -125,7 +125,11 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
                     {article.cover && (
                         // eslint-disable-next-line @next/next/no-img-element
-                        <img src={article.cover} alt={article.title} className="w-full rounded-2xl mb-8 shadow-sm" />
+                        <img
+                            src={article.cover}
+                            alt={article.coverAlt || article.title}
+                            className="w-full max-h-[520px] object-cover rounded-2xl mb-8 shadow-sm"
+                        />
                     )}
 
                     <article className="prose prose-neutral lg:prose-lg max-w-none break-words marker:text-[var(--accent)] prose-headings:font-bold prose-headings:text-[var(--foreground)] prose-a:text-[var(--accent-wood)] hover:prose-a:opacity-80 prose-img:rounded-xl prose-strong:text-[var(--foreground)]">

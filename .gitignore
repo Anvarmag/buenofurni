@@ -6,3 +6,10 @@ dist
 out
 .DS_Store
 server/node_modules
+.claude/settings.local.json
+
+# Исходники фото — тяжёлые (сотни МБ), в репозиторий не нужны.
+# В гит идут только сжатые обложки: frontend/public/generated/
+content/photos/*
+!content/photos/PHOTOS.md
+!content/photos/.keep

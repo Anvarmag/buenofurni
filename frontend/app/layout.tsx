@@ -6,6 +6,7 @@ import "./globals.css";
 import { ModalProvider } from "@/app/providers";
 import CookieBanner from "@/components/layout/CookieBanner";
 import ModalRoot from "@/components/ModalRoot";
+import AnalyticsEvents from "@/app/_components/AnalyticsEvents";
 
 const inter = Inter({
   subsets: ["latin", "cyrillic"],
@@ -58,32 +59,37 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const schemaOrg = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "BUENOFURNI",
-    "url": "https://buenofurni.ru",
-    "logo": "https://buenofurni.ru/favicon.ico",
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "",
-      "contactType": "customer service",
-      "availableLanguage": "Russian"
-    }
-  };
-
-  const localBusinessSchema = {
+  // Единая сущность организации. @id используется как ссылка из разметки
+  // товаров и статей (publisher/brand), чтобы поиск связывал их с компанией.
+  const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "FurnitureStore",
-    "name": "BUENOFURNI - Производство Мебели",
-    "image": "https://buenofurni.ru/generated/hero_chair.png",
-    "@id": "https://buenofurni.ru",
+    "@id": "https://buenofurni.ru/#organization",
+    "name": "BUENOFURNI",
+    "alternateName": "БУЭНОФУРНИ",
     "url": "https://buenofurni.ru",
-    "telephone": "",
+    "logo": "https://buenofurni.ru/generated/hero_chair.png",
+    "image": "https://buenofurni.ru/generated/hero_chair.png",
+    "description": "Собственное производство деревянных стульев, табуретов и столов из берёзовой фанеры и массива берёзы, дуба и бука. Доставка по всей России.",
+    "telephone": "+7-993-094-08-07",
+    "email": "buenofurni@yandex.ru",
+    "taxID": "212710014902",
+    "foundingDate": "2024",
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
       "addressCountry": "RU"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Россия"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+7-993-094-08-07",
+      "email": "buenofurni@yandex.ru",
+      "contactType": "customer service",
+      "availableLanguage": "Russian"
     }
   };
 
@@ -92,11 +98,7 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
       </head>
       <body className="flex min-h-screen flex-col bg-[var(--background)] font-sans text-[var(--foreground)] antialiased selection:bg-[var(--accent)] selection:text-white">
@@ -134,6 +136,7 @@ export default function RootLayout({
           {children}
           <ModalRoot />
           <CookieBanner />
+          <AnalyticsEvents />
         </ModalProvider>
       </body>
     </html>

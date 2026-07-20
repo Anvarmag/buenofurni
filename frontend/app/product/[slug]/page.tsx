@@ -68,20 +68,38 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         notFound();
     }
 
+    const productUrl = `https://buenofurni.ru/product/${product.slug}`;
+
     const schemaMarkup = {
-        "@context": "https://schema.org/",
-        "@type": "Product",
-        "name": product.title,
-        "image": `https://buenofurni.ru${product.imagePath}`,
-        "description": product.shortDescription,
-        "offers": {
-            "@type": "Offer",
-            "url": `https://buenofurni.ru/product/${product.slug}`,
-            "priceCurrency": "RUB",
-            "price": product.priceFrom,
-            "availability": product.availability === 'in-stock' ? "https://schema.org/InStock" : "https://schema.org/PreOrder",
-            "itemCondition": "https://schema.org/NewCondition"
-        }
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Product",
+                "name": product.title,
+                "image": `https://buenofurni.ru${product.imagePath}`,
+                "description": product.shortDescription,
+                "brand": { "@type": "Brand", "name": "BUENOFURNI" },
+                ...(product.sku ? { "sku": product.sku } : {}),
+                ...(product.legsMaterial ? { "material": product.legsMaterial } : {}),
+                "offers": {
+                    "@type": "Offer",
+                    "url": productUrl,
+                    "priceCurrency": "RUB",
+                    "price": product.priceFrom,
+                    "availability": product.availability === 'in-stock' ? "https://schema.org/InStock" : "https://schema.org/PreOrder",
+                    "itemCondition": "https://schema.org/NewCondition",
+                    "seller": { "@id": "https://buenofurni.ru/#organization" }
+                }
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://buenofurni.ru" },
+                    { "@type": "ListItem", "position": 2, "name": "Каталог", "item": "https://buenofurni.ru/catalog" },
+                    { "@type": "ListItem", "position": 3, "name": product.title, "item": productUrl }
+                ]
+            }
+        ]
     };
 
     return (

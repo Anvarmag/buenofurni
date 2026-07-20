@@ -10,6 +10,7 @@ export interface ArticleMeta {
     description: string;
     date: string; // YYYY-MM-DD
     cover?: string;
+    coverAlt?: string; // осмысленный alt для SEO и поиска по картинкам
     author: string;
 }
 
@@ -90,6 +91,7 @@ function readArticle(file: string): Article | null {
         description: data.description || '',
         date: data.date || '',
         cover: data.cover || undefined,
+        coverAlt: data.coverAlt || undefined,
         author: data.author || 'BUENOFURNI',
         body: content.replace(/^\s*#\s+.+\r?\n+/, ''), // убрать ведущий H1 (в т.ч. с пустой строкой перед ним)
         faq: extractFaq(content),

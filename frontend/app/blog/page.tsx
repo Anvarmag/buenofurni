@@ -48,7 +48,8 @@ export default function BlogPage() {
                                         // eslint-disable-next-line @next/next/no-img-element
                                         <img
                                             src={article.cover}
-                                            alt={article.title}
+                                            alt={article.coverAlt || article.title}
+                                            loading="lazy"
                                             className="aspect-[16/10] w-full object-cover"
                                         />
                                     )}
