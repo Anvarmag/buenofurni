@@ -128,7 +128,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                         <img
                             src={article.cover}
                             alt={article.coverAlt || article.title}
-                            className="w-full max-h-[520px] object-cover rounded-2xl mb-8 shadow-sm"
+                            className="mx-auto mb-8 max-h-[620px] w-auto rounded-2xl shadow-sm"
                         />
                     )}
 

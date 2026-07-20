@@ -52,7 +52,7 @@ export default function BlogPage() {
                                             src={article.cover}
                                             alt={article.coverAlt || article.title}
                                             loading="lazy"
-                                            className="aspect-[16/10] w-full object-cover"
+                                            className="aspect-[4/5] w-full object-cover"
                                         />
                                     )}
                                     <div className="flex flex-col flex-1 p-5 sm:p-6">
