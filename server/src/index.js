@@ -5,6 +5,7 @@ import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
 import leadsRouter from './routes/leads.js';
 import trackRouter from './routes/track.js';
+import statsRouter from './routes/stats.js';
 
 // Загрузка переменных окружения из файла .env
 dotenv.config();
@@ -46,6 +47,10 @@ const trackLimiter = rateLimit({
     legacyHeaders: false,
 });
 app.use('/api/track', trackLimiter, trackRouter);
+
+// Статистика для админки. Роутер сам отсекает всё, что пришло не с localhost,
+// поэтому общий лимит запросов ему не нужен.
+app.use('/api/stats', statsRouter);
 
 // Применение лимита скорости для всех путей, начинающихся с /api/
 app.use('/api/', limiter);
