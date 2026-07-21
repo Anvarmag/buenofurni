@@ -14,6 +14,19 @@ export default function MaterialsPage() {
     return (
         <PageLayout headerVariant="overlay">
             <main className="bg-[var(--background)] min-h-screen">
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "BreadcrumbList",
+                            "itemListElement": [
+                                { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://buenofurni.ru" },
+                                { "@type": "ListItem", "position": 2, "name": "Материалы", "item": "https://buenofurni.ru/materials" },
+                            ],
+                        }),
+                    }}
+                />
                 <MaterialsClient />
             </main>
         </PageLayout>

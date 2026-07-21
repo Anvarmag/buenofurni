@@ -33,6 +33,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
         return result;
     });
 
+    // Blog Article Routes — не зависят от products.json
+    const blogRoutes = getAllArticles().map((article) => ({
+        url: `${baseUrl}/blog/${article.slug}`,
+        lastModified: article.date ? new Date(article.date).toISOString() : new Date().toISOString(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.7,
+    }));
+
     // Dynamic Product Routes
     try {
         const filePath = path.join(process.cwd(), 'data', 'products.json');
@@ -49,17 +57,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
             return result;
         });
 
-        // Blog Article Routes
-        const blogRoutes = getAllArticles().map((article) => ({
-            url: `${baseUrl}/blog/${article.slug}`,
-            lastModified: article.date ? new Date(article.date).toISOString() : new Date().toISOString(),
-            changeFrequency: 'monthly' as const,
-            priority: 0.7,
-        }));
-
         return [...staticRoutes, ...dynamicRoutes, ...blogRoutes];
     } catch {
-        // Fallback if products.json fails to read during build
-        return staticRoutes;
+        // Продукты не прочитались — всё равно отдаём статические роуты и блог
+        return [...staticRoutes, ...blogRoutes];
     }
 }

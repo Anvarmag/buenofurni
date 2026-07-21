@@ -77,7 +77,7 @@ export default function ProductGallery({
                             >
                                 <Image
                                     src={img}
-                                    alt={`Thumbnail ${idx + 1}`}
+                                    alt={`${title} — фото ${idx + 1}`}
                                     fill
                                     sizes="(max-width: 640px) 25vw, 150px"
                                     className="object-cover"

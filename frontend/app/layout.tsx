@@ -45,9 +45,6 @@ export const metadata: Metadata = {
     title: 'BUENOFURNI | Деревянная мебель премиум-класса',
     description: 'Собственное производство дизайнерских стульев. Быстрая доставка.',
   },
-  other: {
-    "yandex-verification": "", // Placeholder if user provides one
-  }
 };
 
 export const viewport: Viewport = {
@@ -84,6 +81,7 @@ export default function RootLayout({
       "@type": "Country",
       "name": "Россия"
     },
+    "sameAs": ["https://t.me/buenofurni_support"],
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+7-993-094-08-07",
@@ -93,12 +91,26 @@ export default function RootLayout({
     }
   };
 
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://buenofurni.ru/#website",
+    "name": "BUENOFURNI",
+    "url": "https://buenofurni.ru",
+    "inLanguage": "ru-RU",
+    "publisher": { "@id": "https://buenofurni.ru/#organization" }
+  };
+
   return (
     <html lang="ru" className={`${inter.variable} scroll-smooth`}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
       <body className="flex min-h-screen flex-col bg-[var(--background)] font-sans text-[var(--foreground)] antialiased selection:bg-[var(--accent)] selection:text-white">

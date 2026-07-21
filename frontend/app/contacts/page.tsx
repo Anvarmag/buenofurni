@@ -11,6 +11,19 @@ export const metadata: Metadata = {
 export default function ContactsPage() {
     return (
         <PageLayout headerVariant="default">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "BreadcrumbList",
+                        "itemListElement": [
+                            { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://buenofurni.ru" },
+                            { "@type": "ListItem", "position": 2, "name": "Контакты", "item": "https://buenofurni.ru/contacts" },
+                        ],
+                    }),
+                }}
+            />
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl py-12 sm:py-20">
 
                 <div className="text-center mb-16 sm:mb-24">

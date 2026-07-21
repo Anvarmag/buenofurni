@@ -65,12 +65,8 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                 image: article.cover ? [`${BASE}${article.cover}`] : undefined,
                 datePublished: article.date || undefined,
                 dateModified: article.date || undefined,
-                author: { '@type': 'Organization', name: 'BUENOFURNI', url: BASE },
-                publisher: {
-                    '@type': 'Organization',
-                    name: 'BUENOFURNI',
-                    logo: { '@type': 'ImageObject', url: `${BASE}/favicon.ico` },
-                },
+                author: { '@id': `${BASE}/#organization` },
+                publisher: { '@id': `${BASE}/#organization` },
                 mainEntityOfPage: { '@type': 'WebPage', '@id': url },
             },
             ...(article.faq.length

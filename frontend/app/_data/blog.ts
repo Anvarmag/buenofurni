@@ -59,7 +59,8 @@ function extractFaq(content: string): FaqItem[] {
     let q: string | null = null;
     let a: string[] = [];
     const flush = () => {
-        const answer = a.join(' ').trim();
+        // Чистим markdown-ссылки [текст](url) → текст, чтобы в FAQPage.text не попадала разметка
+        const answer = a.join(' ').trim().replace(/\[([^\]]+)\]\([^)]*\)/g, '$1');
         if (q && answer) faq.push({ q, a: answer });
         q = null;
         a = [];

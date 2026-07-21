@@ -43,6 +43,7 @@ export default async function CatalogPage() {
             "item": {
                 "@type": "Product",
                 "name": product.title,
+                "brand": { "@type": "Brand", "name": "BUENOFURNI" },
                 "description": product.shortDescription,
                 "image": `https://buenofurni.ru${product.imagePath}`,
                 "url": `https://buenofurni.ru/product/${product.slug}`,
