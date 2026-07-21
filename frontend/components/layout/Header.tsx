@@ -7,6 +7,7 @@ import { useModal } from "@/app/providers";
 
 const NAV_LINKS = [
     { href: "/catalog", label: "Каталог" },
+    { href: "/myagkie-stulya-dlya-kuhni", label: "Мягкие стулья" },
     { href: "/horeca", label: "HoReCa", badge: "B2B" },
     { href: "/custom", label: "На заказ" },
     { href: "/materials", label: "Материалы" },
