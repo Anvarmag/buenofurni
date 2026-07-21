@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '/blog',
         '/horeca',
         '/custom',
+        '/myagkie-stulya-dlya-kuhni',
         '/materials',
         '/production',
         '/contacts',
