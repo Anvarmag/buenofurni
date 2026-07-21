@@ -3,8 +3,12 @@ import Link from "next/link";
 const FOOTER_LINKS = {
     catalog: [
         { label: "Все стулья", href: "/catalog" },
+        { label: "Мягкие стулья для кухни", href: "/myagkie-stulya-dlya-kuhni" },
+        { label: "Антивандальные стулья", href: "/antivandalnye-stulya" },
+        { label: "Барные стулья", href: "/barnye-stulya" },
+        { label: "Обеденная группа", href: "/obedennaya-gruppa" },
+        { label: "Стулья на заказ", href: "/custom" },
         { label: "HoReCa", href: "/horeca" },
-        { label: "На заказ", href: "/custom" },
         { label: "Материалы", href: "/materials" },
     ],
     company: [
