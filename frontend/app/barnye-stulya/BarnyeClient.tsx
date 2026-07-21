@@ -310,7 +310,7 @@ export default function BarnyeClient({
                     </h2>
                     <button
                         onClick={() => openModal("b2c", "barnye_final")}
-                        className="button-primary bg-[var(--accent)] hover:opacity-90 text-white h-20 px-12 sm:px-16 w-full sm:w-auto text-xl md:text-2xl font-bold shadow-lg hover:-translate-y-0.5 transition-all rounded-2xl"
+                        className="bg-white text-[var(--accent)] hover:bg-white/90 h-20 px-12 sm:px-16 w-full sm:w-auto text-xl md:text-2xl font-bold shadow-lg hover:-translate-y-0.5 transition-all rounded-2xl"
                     >
                         Оставить заявку
                     </button>
