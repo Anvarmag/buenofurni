@@ -55,7 +55,7 @@ export default function Hero() {
                             </button>
                         </div>
 
-                        <div className="mt-8 flex items-center gap-4 text-sm font-medium text-[var(--muted)] border-t border-black/10 pt-6 max-w-md">
+                        <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-3 text-sm font-medium text-[var(--muted)] border-t border-black/10 pt-6 max-w-md">
                             <div className="flex flex-col">
                                 <span className="text-black font-semibold text-base block">от 5 900 ₽</span>
                                 <span className="text-xs">Базовая цена</span>

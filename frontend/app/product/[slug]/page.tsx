@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { Product } from '../../_data/products';
+import PageLayout from '@/components/layout/PageLayout';
 
 async function getProducts(): Promise<Product[]> {
     try {
@@ -103,7 +104,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     };
 
     return (
-        <main className="bg-white min-h-screen pt-24 pb-16">
+        <PageLayout headerVariant="default">
+        <div className="bg-white pb-16 pt-6 md:pt-10">
             <Script
                 id={`product-schema-${product.slug}`}
                 type="application/ld+json"
@@ -188,6 +190,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
                 </section>
             </div>
-        </main>
+        </div>
+        </PageLayout>
     );
 }

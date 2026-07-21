@@ -240,7 +240,7 @@ export default function CatalogClient({ products }: { products: Product[] }) {
                                                 title: product.title
                                             });
                                         }}
-                                        className="zoom-control absolute top-4 right-4 z-[10] w-10 h-10 bg-white/80 hover:bg-white backdrop-blur-sm rounded-full flex items-center justify-center text-black/70 hover:text-black opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all shadow-sm translate-y-0 lg:translate-y-2 lg:group-hover:translate-y-0"
+                                        className="zoom-control absolute top-4 right-4 z-[10] w-11 h-11 bg-white/80 hover:bg-white backdrop-blur-sm rounded-full flex items-center justify-center text-black/70 hover:text-black opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all shadow-sm translate-y-0 lg:translate-y-2 lg:group-hover:translate-y-0"
                                         aria-label="Увеличить фото"
                                     >
                                         <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -280,14 +280,14 @@ export default function CatalogClient({ products }: { products: Product[] }) {
                                     <div className="flex flex-col gap-1.5 sm:gap-2 mt-auto">
                                         <button
                                             onClick={() => setOrderingProduct(product)}
-                                            className="w-full bg-[var(--accent)] hover:opacity-90 text-white h-[36px] sm:h-[44px] rounded-full font-medium text-xs sm:text-sm text-center transition-opacity shadow-md"
+                                            className="w-full bg-[var(--accent)] hover:opacity-90 text-white h-[44px] rounded-full font-medium text-xs sm:text-sm text-center transition-opacity shadow-md"
                                             aria-label={`Заказать ${product.title}`}
                                         >
                                             Заказать
                                         </button>
                                         <button
                                             onClick={() => setSelectedProduct(product)}
-                                            className="w-full bg-white border border-gray-200 hover:border-gray-300 hover:bg-gray-50 text-gray-700 h-[36px] sm:h-[44px] rounded-full font-medium text-xs sm:text-sm text-center transition-all"
+                                            className="w-full bg-white border border-gray-200 hover:border-gray-300 hover:bg-gray-50 text-gray-700 h-[44px] rounded-full font-medium text-xs sm:text-sm text-center transition-all"
                                         >
                                             Подробнее
                                         </button>

@@ -88,7 +88,7 @@ export default function CatalogOrderModal({ isOpen, onClose, product }: CatalogO
                     <button
                         type="button"
                         onClick={() => setQuantity(q => Math.max(1, q - 1))}
-                        className="w-7 h-7 flex items-center justify-center rounded-full bg-white shadow-sm text-lg hover:text-[var(--accent)] disabled:opacity-50"
+                        className="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm text-lg hover:text-[var(--accent)] disabled:opacity-50"
                         disabled={quantity <= 1}
                         aria-label="Уменьшить"
                     >-</button>
@@ -96,7 +96,7 @@ export default function CatalogOrderModal({ isOpen, onClose, product }: CatalogO
                     <button
                         type="button"
                         onClick={() => setQuantity(q => q + 1)}
-                        className="w-7 h-7 flex items-center justify-center rounded-full bg-white shadow-sm text-lg hover:text-[var(--accent)]"
+                        className="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm text-lg hover:text-[var(--accent)]"
                         aria-label="Увеличить"
                     >+</button>
                 </div>

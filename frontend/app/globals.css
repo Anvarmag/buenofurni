@@ -41,22 +41,24 @@ body {
   padding: 0 24px;
 }
 
-.button-primary {
-  background: var(--accent);
-  color: white;
-  padding: 12px 18px;
-  border-radius: 999px;
-  transition: 0.3s ease;
-}
+@layer components {
+  .button-primary {
+    background: var(--accent);
+    color: white;
+    padding: 12px 18px;
+    border-radius: 999px;
+    transition: 0.3s ease;
+  }
 
-.button-primary:hover {
-  opacity: 0.9;
-}
+  .button-primary:hover {
+    opacity: 0.9;
+  }
 
-.button-secondary {
-  border: 1px solid var(--border);
-  padding: 12px 18px;
-  border-radius: 999px;
+  .button-secondary {
+    border: 1px solid var(--border);
+    padding: 12px 18px;
+    border-radius: 999px;
+  }
 }
 
 /* Hide zoom controls when any overlay (modal, mobile menu) is open */
@@ -81,4 +83,29 @@ body.has-overlay .zoom-control {
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 0, 0, 0.2);
+}
+
+/* Скрыть скроллбар у каруселей/лент (визуально; прокрутка остаётся) */
+.hide-scrollbar,
+.hide-scrollbars,
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar,
+.hide-scrollbars::-webkit-scrollbar,
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* Ken Burns для героя «Материалы» */
+@keyframes slow-pan {
+  from {
+    transform: scale(1.05) translate(0, 0);
+  }
+
+  to {
+    transform: scale(1.15) translate(-1.5%, -1.5%);
+  }
 }

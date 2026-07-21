@@ -103,7 +103,7 @@ export default function MaterialsClient() {
 
                 <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
                     <Reveal>
-                        <h1 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight drop-shadow-lg">
+                        <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-white mb-6 tracking-tight drop-shadow-lg">
                             Материалы, <br className="hidden md:block" />которые ощущаются
                         </h1>
                     </Reveal>
