@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '/myagkie-stulya-dlya-kuhni',
         '/antivandalnye-stulya',
         '/obedennaya-gruppa',
+        '/barnye-stulya',
         '/materials',
         '/production',
         '/contacts',
