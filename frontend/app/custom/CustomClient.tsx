@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import FallbackImage from "@/components/ui/FallbackImage";
 import Link from "next/link";
 import { useModal } from "@/app/providers";
+import { FAQS } from "./faqs";
 
 export default function CustomClient() {
     const { openModal } = useModal();
@@ -33,13 +34,7 @@ export default function CustomClient() {
         "/generated/custom_example_06_kitchen.png.png"
     ];
 
-    const faqs = [
-        { q: "Как подобрать идеальную модель?", a: "Мы предоставляем бесплатную консультацию дизайнера. Если у вас есть фото интерьера или визуализация, мы подберем 2-3 варианта стульев, подходящих по стилю, цвету и размерам." },
-        { q: "Как выбрать правильную ткань(микровелюр, букле или экокожа)?", a: "Для дома с животными рекомендуем антивандальный микровелюр («антикоготь»). Букле отлично смотрится в гостиных и спальнях, придавая уют. Премиальная экокожа — самый практичный выбор для кухни или зоны с высокой проходимостью, она легко моется." },
-        { q: "От чего зависит итоговая стоимость?", a: "Цена складывается из: базовой стоимости выбранной модели, категории ткани (у нас есть как базовые, так и эксклюзивные коллекции), типа покрытия деревянных элементов (стандартный лак, цветное масло или индивидуальная эмаль по RAL) и дополнительных пропиток." },
-        { q: "Можно ли заказать выкрас ножек по моему образцу или RAL?", a: "Да, окрашивание деревянных элементов по каталогу RAL или NCS — одна из наших главных услуг. Это позволяет идеально вписать мебель в ваш проект." },
-        { q: "Делаете ли вы мебель по фото или эскизу?", a: "Наше производство специализируется на адаптации наших базовых моделей (см. Каталог) под задачи клиента посредством выбора фактур и цветов. Производство принципиально новых каркасов «с нуля» по фото возможно только при оптовом заказе (от 20 шт)." }
-    ];
+    const faqs = FAQS;
 
     return (
         <div className="w-full bg-[var(--background)] pb-24 md:pb-0">
@@ -64,10 +59,10 @@ export default function CustomClient() {
                             Индивидуальный заказ
                         </div>
                         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight tracking-tight drop-shadow-md">
-                            Сделаем под <br className="hidden md:block" />ваш интерьер
+                            Стулья на заказ <br className="hidden md:block" />под ваш интерьер
                         </h1>
                         <p className="text-lg md:text-2xl font-medium mb-8 text-gray-200 drop-shadow max-w-xl">
-                            Выберите модель, ткань и отделку ножек — мы рассчитаем стоимость и сроки.
+                            Свой цвет ножек, обивка и размер — рассчитаем стоимость и сроки под вашу задачу.
                         </p>
 
                         <div className="bg-gradient-to-r from-[var(--accent)] to-[#e5a84e] text-white backdrop-blur-md p-6 rounded-2xl mb-8 flex flex-col justify-center max-w-md shadow-[0_10px_30px_-10px_rgba(224,166,78,0.5)] border border-white/20 transform hover:scale-105 transition-transform">
@@ -98,8 +93,8 @@ export default function CustomClient() {
                 <div className="container">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-4 text-center">
                         <div className="flex-1">
-                            <h3 className="text-xl md:text-2xl font-black mb-1">Сроки до 3 дней</h3>
-                            <p className="text-sm font-medium opacity-90">На стандартный ассортимент</p>
+                            <h3 className="text-xl md:text-2xl font-black mb-1">До 2 недель на заказ</h3>
+                            <p className="text-sm font-medium opacity-90">В наличии — быстрая отгрузка</p>
                         </div>
                         <div className="hidden md:block w-px h-12 bg-white/20"></div>
                         <div className="flex-1">
@@ -112,6 +107,18 @@ export default function CustomClient() {
                             <p className="text-sm font-medium opacity-90">От каркаса до обивки</p>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            {/* Прямой ответ — для ИИ-выжимки и SEO */}
+            <section className="py-14 md:py-20 bg-white border-b border-black/5">
+                <div className="container max-w-3xl">
+                    <p className="text-lg md:text-xl text-[var(--muted)] leading-relaxed">
+                        Изготавливаем <strong className="text-black font-semibold">стулья на заказ</strong>: свой цвет
+                        ножек (пять цветов), обивка на выбор — микровелюр, букле или экокожа, размеры под ваш стол.
+                        Каркас — берёзовая фанера 20 мм класса E0,5 или массив. Любое количество, хоть один стул; срок
+                        изготовления до 2 недель, гарантия 12 месяцев, доставка по всей России. Базовая цена — от 5 900 ₽.
+                    </p>
                 </div>
             </section>
 
@@ -284,6 +291,32 @@ export default function CustomClient() {
                             </details>
                         ))}
                     </div>
+                </div>
+            </section>
+
+            {/* Полезные статьи — перелинковка */}
+            <section className="py-16 md:py-20 bg-white border-t border-black/5">
+                <div className="container max-w-3xl">
+                    <h2 className="text-2xl md:text-3xl font-bold mb-8">Полезное перед заказом</h2>
+                    <ul className="grid gap-3 sm:grid-cols-2">
+                        {[
+                            { href: "/blog/cveta-nozhek-stulyev", t: "Цвета ножек: как выбрать" },
+                            { href: "/blog/gabarity-stula-zadvinetsya-li-pod-stol", t: "Габариты стула: задвинется ли под стол" },
+                            { href: "/blog/fanera-ili-massiv-stulya", t: "Фанера или массив для стульев" },
+                            { href: "/blog/klass-emissii-fanery-bezopasnost", t: "Класс эмиссии E0,5 и безопасность" },
+                            { href: "/blog/antivandalnaya-obivka-mikrovelyur", t: "Антивандальная обивка микровелюр" },
+                            { href: "/myagkie-stulya-dlya-kuhni", t: "Мягкие стулья для кухни" },
+                        ].map((l) => (
+                            <li key={l.href}>
+                                <Link
+                                    href={l.href}
+                                    className="flex items-center gap-2 text-[var(--accent-wood)] font-medium hover:underline"
+                                >
+                                    <span className="text-[var(--accent)]">→</span> {l.t}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
             </section>
 

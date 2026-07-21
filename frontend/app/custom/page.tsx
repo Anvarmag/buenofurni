@@ -1,10 +1,11 @@
 import { Metadata } from 'next';
 import CustomClient from './CustomClient';
 import PageLayout from "@/components/layout/PageLayout";
+import { FAQS } from './faqs';
 
 export const metadata: Metadata = {
-    title: 'Изготовление стульев на заказ | Мебель от BUENOFURNI',
-    description: 'Производим стулья из шпона и фанеры под ваш интерьер. Выбор ткани (микровелюр, букле). Сроки до 15 дней. Гарантия 12 месяцев. Рассчитайте стоимость онлайн.',
+    title: 'Стулья на заказ от производителя — свой размер, цвет, обивка | BUENOFURNI',
+    description: 'Изготовление стульев на заказ: свой цвет ножек (5 цветов), обивка микровелюр, букле или экокожа, размеры под ваш стол. Каркас — берёзовая фанера E0,5 или массив. Любое количество, срок до 2 недель, гарантия 12 месяцев. От 5 900 ₽, доставка по России.',
     alternates: {
         canonical: '/custom',
     }
@@ -22,6 +23,14 @@ export default function CustomPage() {
                 "provider": { "@id": "https://buenofurni.ru/#organization" },
                 "areaServed": { "@type": "Country", "name": "Россия" },
                 "url": "https://buenofurni.ru/custom"
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": FAQS.map((f) => ({
+                    "@type": "Question",
+                    "name": f.q,
+                    "acceptedAnswer": { "@type": "Answer", "text": f.a },
+                })),
             },
             {
                 "@type": "BreadcrumbList",
