@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '/horeca',
         '/custom',
         '/myagkie-stulya-dlya-kuhni',
+        '/antivandalnye-stulya',
         '/materials',
         '/production',
         '/contacts',
