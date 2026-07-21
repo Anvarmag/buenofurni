@@ -28,7 +28,11 @@ export default async function CatalogPage() {
 
     try {
         const fileContents = await fs.readFile(filePath, 'utf8');
-        products = JSON.parse(fileContents);
+        // Прячем незаполненные заглушки из админки («Новый товар», без цены/фото)
+        products = (JSON.parse(fileContents) as Product[]).filter((p) => {
+            const t = (p.title || '').trim().toLowerCase();
+            return t !== '' && t !== 'новый товар' && p.priceFrom > 0 && !!(p.imagePath || '').trim();
+        });
     } catch (error) {
         console.error('Error reading products.json:', error);
     }

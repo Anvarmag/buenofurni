@@ -47,7 +47,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
         const fileContent = fs.readFileSync(filePath, 'utf8');
         const products: Product[] = JSON.parse(fileContent);
 
-        const dynamicRoutes = products.map((product) => {
+        const dynamicRoutes = products
+            .filter((product) => {
+                const t = (product.title || '').trim().toLowerCase();
+                return t !== '' && t !== 'новый товар' && product.priceFrom > 0 && !!(product.imagePath || '').trim();
+            })
+            .map((product) => {
             const result: { url: string; lastModified: string; changeFrequency: "weekly"; priority: number } = {
                 url: `${baseUrl}/product/${product.slug}`,
                 lastModified: new Date().toISOString(),
