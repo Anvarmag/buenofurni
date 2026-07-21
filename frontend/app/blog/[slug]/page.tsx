@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import Script from 'next/script';
 import ReactMarkdown, { type Components } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import PageLayout from '@/components/layout/PageLayout';
@@ -100,8 +99,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     return (
         <PageLayout>
             <main className="bg-[var(--background)] min-h-screen">
-                <Script
-                    id={`article-schema-${article.slug}`}
+                <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
                 />

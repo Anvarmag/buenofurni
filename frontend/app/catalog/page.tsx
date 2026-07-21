@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import CatalogClient from './CatalogClient';
-import Script from 'next/script';
 import Link from 'next/link';
 import { promises as fs } from 'fs';
 import path from 'path';
@@ -19,7 +18,7 @@ export const metadata: Metadata = {
         title: 'Каталог стульев и кресел | BUENOFURNI',
         description: 'Каталог премиальной мебели от производителя BUENOFURNI. Выбирайте ткань, цвет ножек и создавайте стул под ваш интерьер.',
         url: 'https://buenofurni.ru/catalog',
-        images: [{ url: '/generated/hero_chair.png', width: 1200, height: 630 }],
+        images: [{ url: '/og-image.png', width: 1200, height: 630 }],
     }
 };
 
@@ -59,8 +58,7 @@ export default async function CatalogPage() {
 
     return (
         <PageLayout headerVariant="default">
-            <Script
-                id="catalog-schema"
+            <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
             />

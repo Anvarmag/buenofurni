@@ -5,6 +5,7 @@ import ContactForm from "./ContactForm";
 export const metadata: Metadata = {
     title: 'Контакты | BUENOFURNI',
     description: 'Мы всегда на связи. Свяжитесь с нами для обсуждения вашего заказа.',
+    alternates: { canonical: '/contacts' },
 };
 
 export default function ContactsPage() {

@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Script from 'next/script';
 import { promises as fs } from 'fs';
 import path from 'path';
 import PageLayout from '@/components/layout/PageLayout';
@@ -107,8 +106,7 @@ export default async function MyagkieStulyaPage() {
     return (
         <PageLayout headerVariant="overlay">
             <main className="bg-[var(--background)]">
-                <Script
-                    id="myagkie-schema"
+                <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
                 />

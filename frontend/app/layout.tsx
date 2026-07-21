@@ -33,10 +33,10 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/generated/hero_chair.png',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'BUENOFURNI - Дизайнерские стулья',
+        alt: 'BUENOFURNI — деревянная мебель от производителя',
       }
     ],
   },
@@ -68,8 +68,8 @@ export default function RootLayout({
     "name": "BUENOFURNI",
     "alternateName": "БУЭНОФУРНИ",
     "url": "https://buenofurni.ru",
-    "logo": "https://buenofurni.ru/generated/hero_chair.png",
-    "image": "https://buenofurni.ru/generated/hero_chair.png",
+    "logo": "https://buenofurni.ru/icon-512.png",
+    "image": "https://buenofurni.ru/og-image.png",
     "description": "Собственное производство деревянных стульев, табуретов и столов из берёзовой фанеры и массива берёзы, дуба и бука. Доставка по всей России.",
     "telephone": "+7-993-094-08-07",
     "email": "buenofurni@yandex.ru",

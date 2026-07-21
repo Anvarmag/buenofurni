@@ -2,7 +2,6 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import ProductClient from './ProductClient';
 import ProductGallery from '@/components/product/ProductGallery';
-import Script from 'next/script';
 import Link from 'next/link';
 import { promises as fs } from 'fs';
 import path from 'path';
@@ -106,8 +105,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     return (
         <PageLayout headerVariant="default">
         <div className="bg-white pb-16 pt-6 md:pt-10">
-            <Script
-                id={`product-schema-${product.slug}`}
+            <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
             />
