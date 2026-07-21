@@ -12,13 +12,6 @@ export const metadata: Metadata = {
 
 export const revalidate = 3600;
 
-function formatDate(value: string): string {
-    if (!value) return '';
-    const date = new Date(value);
-    if (isNaN(date.getTime())) return value;
-    return date.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
-}
-
 export default function BlogPage() {
     const articles = getAllArticles();
 
@@ -56,12 +49,7 @@ export default function BlogPage() {
                                         />
                                     )}
                                     <div className="flex flex-col flex-1 p-5 sm:p-6">
-                                        {article.date && (
-                                            <time className="text-xs uppercase tracking-wider text-[var(--muted)]">
-                                                {formatDate(article.date)}
-                                            </time>
-                                        )}
-                                        <h2 className="mt-2 text-xl font-bold text-[var(--foreground)] group-hover:text-[var(--accent-wood)] transition-colors">
+                                        <h2 className="text-xl font-bold text-[var(--foreground)] group-hover:text-[var(--accent-wood)] transition-colors">
                                             {article.title}
                                         </h2>
                                         <p className="mt-2 text-sm text-[var(--muted)] line-clamp-3 flex-1">

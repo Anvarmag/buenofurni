@@ -30,13 +30,6 @@ export async function generateStaticParams() {
 
 export const revalidate = 3600;
 
-function formatDate(value: string): string {
-    if (!value) return '';
-    const date = new Date(value);
-    if (isNaN(date.getTime())) return value;
-    return date.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
-}
-
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const { slug } = await params;
     const article = getArticle(slug);
@@ -128,12 +121,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                     </nav>
 
                     <header className="mb-8">
-                        {article.date && (
-                            <time className="text-sm uppercase tracking-wider text-[var(--muted)]">
-                                {formatDate(article.date)}
-                            </time>
-                        )}
-                        <h1 className="mt-2 text-3xl sm:text-4xl font-bold text-[var(--foreground)] leading-tight">
+                        <h1 className="text-3xl sm:text-4xl font-bold text-[var(--foreground)] leading-tight">
                             {article.title}
                         </h1>
                     </header>
