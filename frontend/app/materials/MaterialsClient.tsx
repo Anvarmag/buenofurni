@@ -103,7 +103,7 @@ export default function MaterialsClient() {
 
                 <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
                     <Reveal>
-                        <h1 className="text-4xl sm:text-5xl md:text-7xl font-black text-white mb-6 tracking-tight drop-shadow-lg">
+                        <h1 className="text-4xl sm:text-5xl md:text-7xl font-semibold text-white mb-6 tracking-tight drop-shadow-lg">
                             Материалы, <br className="hidden md:block" />которые ощущаются
                         </h1>
                     </Reveal>
@@ -191,7 +191,7 @@ export default function MaterialsClient() {
             <section className="py-24 md:py-32 overflow-hidden bg-[var(--background)]">
                 <div className="container max-w-7xl">
                     <Reveal>
-                        <h2 className="text-4xl md:text-6xl font-black text-center mb-16">Обивочные ткани</h2>
+                        <h2 className="text-4xl md:text-6xl font-semibold text-center mb-16">Обивочные ткани</h2>
                     </Reveal>
 
                     {/* General Samples Image */}
@@ -250,7 +250,7 @@ export default function MaterialsClient() {
                                             src={tabsData[activeTab].img}
                                             alt={`Фактура ткани ${tabsData[activeTab].title}`}
                                             fill
-                                            className="object-cover transform hover:scale-110 transition-transform duration-[20s] ease-out"
+                                            className="object-cover transform hover:scale-110 transition-transform duration-700 ease-out"
                                         />
                                     </div>
                                 </Reveal>
@@ -314,7 +314,7 @@ export default function MaterialsClient() {
             <section className="py-32 bg-[var(--background)] border-t border-black/10 text-center">
                 <div className="container max-w-4xl mx-auto flex flex-col items-center">
                     <Reveal>
-                        <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight">Подберём материал<br className="hidden md:block" />под ваш интерьер</h2>
+                        <h2 className="text-4xl md:text-6xl font-semibold mb-8 leading-tight">Подберём материал<br className="hidden md:block" />под ваш интерьер</h2>
                         <p className="text-xl md:text-2xl text-[var(--muted)] mb-12 max-w-2xl font-medium">
                             Оставьте заявку, и наши менеджеры помогут выбрать идеальное сочетание ткани и цвета Каркаса.
                         </p>

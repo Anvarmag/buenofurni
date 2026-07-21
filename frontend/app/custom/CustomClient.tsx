@@ -58,15 +58,15 @@ export default function CustomClient() {
                         <div className="inline-block bg-[var(--accent)] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-6">
                             Индивидуальный заказ
                         </div>
-                        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight tracking-tight drop-shadow-md">
+                        <h1 className="text-4xl sm:text-5xl font-semibold mb-6 leading-tight tracking-tight drop-shadow-md">
                             Стулья на заказ <br className="hidden md:block" />под ваш интерьер
                         </h1>
                         <p className="text-lg md:text-2xl font-medium mb-8 text-gray-200 drop-shadow max-w-xl">
                             Свой цвет ножек, обивка и размер — рассчитаем стоимость и сроки под вашу задачу.
                         </p>
 
-                        <div className="bg-gradient-to-r from-[var(--accent)] to-[#e5a84e] text-white backdrop-blur-md p-6 rounded-2xl mb-8 flex flex-col justify-center max-w-md shadow-[0_10px_30px_-10px_rgba(224,166,78,0.5)] border border-white/20 transform hover:scale-105 transition-transform">
-                            <span className="text-4xl md:text-5xl font-black mb-1 drop-shadow-md">От 5 900 ₽*</span>
+                        <div className="bg-gradient-to-r from-[var(--accent)] to-[var(--accent-wood)] text-white backdrop-blur-md p-6 rounded-2xl mb-8 flex flex-col justify-center max-w-md shadow-lg border border-white/20 transform hover:scale-105 transition-transform">
+                            <span className="text-4xl md:text-5xl font-semibold mb-1 drop-shadow-md">От 5 900 ₽*</span>
                             <span className="text-sm text-white/90 leading-tight font-medium">
                                 *Финальная стоимость зависит от выбранной ткани и отделки ножек.
                             </span>
@@ -93,17 +93,17 @@ export default function CustomClient() {
                 <div className="container">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-4 text-center">
                         <div className="flex-1">
-                            <h3 className="text-xl md:text-2xl font-black mb-1">До 2 недель на заказ</h3>
+                            <h3 className="text-xl md:text-2xl font-semibold mb-1">До 2 недель на заказ</h3>
                             <p className="text-sm font-medium opacity-90">В наличии — быстрая отгрузка</p>
                         </div>
                         <div className="hidden md:block w-px h-12 bg-white/20"></div>
                         <div className="flex-1">
-                            <h3 className="text-xl md:text-2xl font-black mb-1">Гарантия 12 месяцев</h3>
+                            <h3 className="text-xl md:text-2xl font-semibold mb-1">Гарантия 12 месяцев</h3>
                             <p className="text-sm font-medium opacity-90">По договору на изделие</p>
                         </div>
                         <div className="hidden md:block w-px h-12 bg-white/20"></div>
                         <div className="flex-1">
-                            <h3 className="text-xl md:text-2xl font-black mb-1">Собственное производство</h3>
+                            <h3 className="text-xl md:text-2xl font-semibold mb-1">Собственное производство</h3>
                             <p className="text-sm font-medium opacity-90">От каркаса до обивки</p>
                         </div>
                     </div>
@@ -134,7 +134,7 @@ export default function CustomClient() {
                             { step: "04", title: "Производство", text: "Изготавливаем, упаковываем и привозим вам домой." }
                         ].map((item, i) => (
                             <div key={i} className="bg-[var(--background)] p-8 rounded-3xl relative overflow-hidden group hover:shadow-lg transition-shadow">
-                                <span className="absolute -top-6 -right-4 text-8xl font-black text-black/5 select-none">{item.step}</span>
+                                <span className="absolute -top-6 -right-4 text-8xl font-semibold text-black/5 select-none">{item.step}</span>
                                 <div className="relative z-10">
                                     <h3 className="text-2xl font-bold mb-3">{item.title}</h3>
                                     <p className="text-[var(--muted)] mb-6">{item.text}</p>
@@ -321,14 +321,14 @@ export default function CustomClient() {
             </section>
 
             {/* Final CTA */}
-            <section className="py-24 md:py-32 bg-black text-white text-center">
+            <section className="py-24 md:py-32 bg-[var(--accent)] text-white text-center">
                 <div className="container max-w-4xl mx-auto flex flex-col items-center">
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-10 leading-tight">
+                    <h2 className="text-4xl md:text-5xl font-semibold mb-10 leading-tight">
                         Оставьте заявку — <br className="hidden md:block" />мы предложим 2–3 варианта под ваш бюджет
                     </h2>
                     <button
                         onClick={() => openModal('b2c', 'custom_page_final')}
-                        className="button-primary bg-[var(--accent)] hover:bg-[#d8973b] text-white h-20 px-12 sm:px-16 w-full sm:w-auto text-xl md:text-2xl font-bold shadow-[0_20px_40px_-15px_rgba(224,166,78,0.5)] hover:-translate-y-2 transition-transform rounded-2xl"
+                        className="button-primary bg-[var(--accent)] hover:opacity-90 text-white h-20 px-12 sm:px-16 w-full sm:w-auto text-xl md:text-2xl font-bold shadow-lg hover:-translate-y-0.5 transition-all rounded-2xl"
                     >
                         Оставить заявку
                     </button>

@@ -84,7 +84,7 @@ export default function HorecaClient() {
                         <div className="inline-block bg-[var(--accent)] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-6">
                             B2B Сектор
                         </div>
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
+                        <h1 className="text-4xl md:text-5xl font-semibold mb-6 leading-tight">
                             Мебель для кафе <br className="hidden lg:block" />и ресторанов
                         </h1>
                         <p className="text-lg md:text-xl font-medium mb-10 lg:text-gray-600 drop-shadow-md lg:drop-shadow-none max-w-xl mx-auto lg:mx-0">
@@ -162,7 +162,7 @@ export default function HorecaClient() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
                         {processSteps.map((step, i) => (
                             <div key={i} className="relative flex flex-col p-8 rounded-3xl border border-black/10 hover:border-black/30 transition-colors bg-white z-10">
-                                <span className="text-5xl font-black text-black/5 mb-6">{step.num}</span>
+                                <span className="text-5xl font-semibold text-black/5 mb-6">{step.num}</span>
                                 <h3 className="text-xl font-bold mb-3">{step.title}</h3>
                                 <p className="text-[var(--muted)]">{step.text}</p>
                             </div>
@@ -174,7 +174,7 @@ export default function HorecaClient() {
             {/* Final CTA */}
             <section className="py-24 md:py-32 bg-[var(--background)] text-center">
                 <div className="container max-w-4xl mx-auto flex flex-col items-center">
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-8 leading-tight">Готовы обсудить <br className="hidden sm:block" />проект?</h2>
+                    <h2 className="text-4xl md:text-5xl font-semibold mb-8 leading-tight">Готовы обсудить <br className="hidden sm:block" />проект?</h2>
                     <p className="text-xl md:text-2xl text-[var(--muted)] mb-12 max-w-2xl font-medium">
                         Напишите нам или оставьте заявку, чтобы получить каталог с оптовыми ценами и условиями сотрудничества.
                     </p>

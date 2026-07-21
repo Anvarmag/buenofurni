@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 @plugin "@tailwindcss/typography";
 
 /* ============================= */
@@ -47,17 +48,23 @@ body {
     color: white;
     padding: 12px 18px;
     border-radius: 999px;
-    transition: 0.3s ease;
+    transition: background-color .2s ease, transform .2s ease, opacity .2s ease, box-shadow .2s ease;
   }
 
   .button-primary:hover {
-    opacity: 0.9;
+    opacity: 0.92;
   }
 
   .button-secondary {
     border: 1px solid var(--border);
     padding: 12px 18px;
     border-radius: 999px;
+    transition: background-color .2s ease, border-color .2s ease;
+  }
+
+  .button-secondary:hover {
+    background: rgba(31, 31, 31, .04);
+    border-color: rgba(31, 31, 31, .2);
   }
 }
 
@@ -107,5 +114,25 @@ body.has-overlay .zoom-control {
 
   to {
     transform: scale(1.15) translate(-1.5%, -1.5%);
+  }
+}
+
+/* Видимый фокус с клавиатуры (a11y) */
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--accent);
+  border-radius: 6px;
+}
+
+/* Уважаем системную настройку «уменьшить движение» (a11y) */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

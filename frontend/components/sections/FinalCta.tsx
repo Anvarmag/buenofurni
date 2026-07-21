@@ -8,7 +8,7 @@ export default function FinalCta() {
     return (
         <section className="py-24 sm:py-32 bg-[var(--background)]">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-                <div className="relative overflow-hidden rounded-[2.5rem] bg-black px-6 py-20 text-center shadow-2xl sm:px-16 sm:py-24 md:py-32">
+                <div className="relative overflow-hidden rounded-[2.5rem] bg-[var(--accent)] px-6 py-20 text-center shadow-2xl sm:px-16 sm:py-24 md:py-32">
 
                     {/* Subtle noise/texture overlay for premium dark feel */}
                     <div className="absolute inset-0 bg-[url('/noise.png')] opacity-20 mix-blend-overlay pointer-events-none" />

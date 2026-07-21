@@ -140,7 +140,7 @@ export default function ProductionClient() {
                             <div className="inline-block border border-white/20 bg-white/10 backdrop-blur-sm text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-8">
                                 О фабрике
                             </div>
-                            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight drop-shadow-xl tracking-tight">
+                            <h1 className="text-5xl md:text-6xl font-semibold mb-6 leading-tight drop-shadow-xl tracking-tight">
                                 Собственное <br className="hidden md:block" />производство
                             </h1>
                         </Reveal>
@@ -178,7 +178,7 @@ export default function ProductionClient() {
                 <div className="container max-w-7xl">
                     <div className="text-center mb-24">
                         <Reveal>
-                            <h2 className="text-4xl md:text-5xl font-black text-black">Как мы создаем мебель</h2>
+                            <h2 className="text-4xl md:text-5xl font-semibold text-black">Как мы создаем мебель</h2>
                         </Reveal>
                     </div>
 
@@ -212,7 +212,7 @@ export default function ProductionClient() {
                                     <div className="w-full lg:w-1/2 flex flex-col justify-center z-10">
                                         <Reveal delay={200}>
                                             <div className="flex items-center gap-6 mb-6">
-                                                <span className="text-6xl md:text-8xl font-black text-black/5 select-none">{stage.num}</span>
+                                                <span className="text-6xl md:text-8xl font-semibold text-black/5 select-none">{stage.num}</span>
                                                 <div className="h-px bg-black/10 flex-grow hidden sm:block"></div>
                                             </div>
                                             <h3 className="text-3xl md:text-4xl font-bold mb-6 text-black tracking-tight">{stage.title}</h3>
@@ -239,7 +239,7 @@ export default function ProductionClient() {
                 <div className="container max-w-6xl">
                     <Reveal>
                         <div className="text-center max-w-3xl mx-auto mb-20">
-                            <h2 className="text-4xl md:text-5xl font-black mb-6">Качество на десятилетия</h2>
+                            <h2 className="text-4xl md:text-5xl font-semibold mb-6">Качество на десятилетия</h2>
                             <p className="text-xl text-[var(--muted)]">Скандинавский подход к прочности и эргономике. Мы проектируем стулья так, чтобы они служили вашей семье поколениями.</p>
                         </div>
                     </Reveal>
@@ -272,7 +272,7 @@ export default function ProductionClient() {
                                 <div className="inline-block bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-8">
                                     B2B PARTNERS
                                 </div>
-                                <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight">
+                                <h2 className="text-4xl md:text-5xl font-semibold mb-6 leading-tight">
                                     Оптовое производство для дизайна и бизнеса
                                 </h2>
                                 <p className="text-xl text-gray-300 mb-8 leading-relaxed max-w-2xl">
@@ -281,7 +281,7 @@ export default function ProductionClient() {
                                 <div className="flex flex-col sm:flex-row items-center gap-6">
                                     <button
                                         onClick={() => openModal('b2b', 'production_b2b_panel')}
-                                        className="button-primary bg-[var(--accent)] text-white hover:bg-[#d8973b] h-16 px-10 text-lg w-full sm:w-auto shadow-[0_10px_30px_-10px_rgba(224,166,78,0.5)] border-transparent"
+                                        className="button-primary bg-[var(--accent)] text-white hover:opacity-90 h-16 px-10 text-lg w-full sm:w-auto shadow-lg border-transparent"
                                     >
                                         Получить КП на партию
                                     </button>
@@ -313,7 +313,7 @@ export default function ProductionClient() {
                         </div>
                         <div className="w-full md:w-1/2">
                             <Reveal delay={200}>
-                                <h2 className="text-4xl md:text-5xl font-black text-black mb-8 leading-tight">Уважение к природе и ресурсам</h2>
+                                <h2 className="text-4xl md:text-5xl font-semibold text-black mb-8 leading-tight">Уважение к природе и ресурсам</h2>
                                 <p className="text-xl text-[var(--muted)] leading-relaxed mb-6">
                                     Наш принцип осознанного потребления прост — производить мебель, которую не придется выбрасывать через пару лет. Срок службы качественного стула из березовой фанеры составляет десятилетия.
                                 </p>
@@ -330,7 +330,7 @@ export default function ProductionClient() {
             <section className="py-32 bg-[var(--background)] border-t border-black/10 text-center">
                 <div className="container max-w-4xl mx-auto flex flex-col items-center">
                     <Reveal>
-                        <h2 className="text-4xl md:text-6xl font-black mb-6 leading-tight">Готовы обсудить <br className="hidden md:block" />проект?</h2>
+                        <h2 className="text-4xl md:text-6xl font-semibold mb-6 leading-tight">Готовы обсудить <br className="hidden md:block" />проект?</h2>
                         <p className="text-xl md:text-2xl text-[var(--muted)] mb-12 max-w-2xl font-medium">
                             Мы одинаково ответственно подходим как к розничным заказам преобразиющим ваш дом, так и к крупным партиям для ресторанов.
                         </p>

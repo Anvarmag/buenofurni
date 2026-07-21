@@ -18,7 +18,7 @@ export default function Hero() {
     useEffect(() => {
         const timer = setInterval(() => {
             setCurrentImageIdx((prev) => (prev + 1) % HERO_IMAGES.length);
-        }, 3000);
+        }, 5500);
         return () => clearInterval(timer);
     }, []);
 
@@ -84,7 +84,7 @@ export default function Hero() {
                                     fill
                                     priority={idx === 0}
                                     sizes="(max-width: 768px) 100vw, 60vw"
-                                    className={`object-cover object-center absolute inset-0 transition-opacity duration-[200ms] ${idx === currentImageIdx ? "opacity-100 z-10" : "opacity-0 z-0"
+                                    className={`object-cover object-center absolute inset-0 transition-opacity duration-700 ${idx === currentImageIdx ? "opacity-100 z-10" : "opacity-0 z-0"
                                         }`}
                                 />
                             ))}

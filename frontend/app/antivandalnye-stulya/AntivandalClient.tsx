@@ -89,7 +89,7 @@ export default function AntivandalClient({
                         <div className="inline-block bg-[var(--accent)] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-6">
                             Микровелюр · Мартиндейл 60 000
                         </div>
-                        <h1 className="text-4xl sm:text-5xl md:text-6xl font-black mb-6 leading-tight tracking-tight drop-shadow-md">
+                        <h1 className="text-4xl sm:text-5xl font-semibold mb-6 leading-tight tracking-tight drop-shadow-md">
                             Антивандальные<br className="hidden md:block" /> стулья
                         </h1>
                         <p className="text-lg md:text-xl font-medium mb-8 text-gray-200 drop-shadow max-w-xl">
@@ -97,8 +97,8 @@ export default function AntivandalClient({
                             Каркас — берёзовая фанера E0,5. Любое количество, доставка по всей России.
                         </p>
 
-                        <div className="bg-gradient-to-r from-[var(--accent)] to-[#e5a84e] text-white p-6 rounded-2xl mb-8 max-w-md shadow-[0_10px_30px_-10px_rgba(224,166,78,0.5)] border border-white/20">
-                            <span className="block text-4xl md:text-5xl font-black mb-1 drop-shadow-md">От 5 900 ₽*</span>
+                        <div className="bg-gradient-to-r from-[var(--accent)] to-[var(--accent-wood)] text-white p-6 rounded-2xl mb-8 max-w-md shadow-lg border border-white/20">
+                            <span className="block text-4xl md:text-5xl font-semibold mb-1 drop-shadow-md">От 5 900 ₽*</span>
                             <span className="text-sm text-white/90 leading-tight font-medium">
                                 *Финальная цена зависит от обивки и отделки ножек.
                             </span>
@@ -132,17 +132,17 @@ export default function AntivandalClient({
                 <div className="container">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-4 text-center">
                         <div className="flex-1">
-                            <h3 className="text-xl md:text-2xl font-black mb-1">Мартиндейл 60 000</h3>
+                            <h3 className="text-xl md:text-2xl font-semibold mb-1">Мартиндейл 60 000</h3>
                             <p className="text-sm font-medium opacity-90">Износостойкость HoReCa-уровня</p>
                         </div>
                         <div className="hidden md:block w-px h-12 bg-white/20" />
                         <div className="flex-1">
-                            <h3 className="text-xl md:text-2xl font-black mb-1">Гарантия 12 месяцев</h3>
+                            <h3 className="text-xl md:text-2xl font-semibold mb-1">Гарантия 12 месяцев</h3>
                             <p className="text-sm font-medium opacity-90">По договору на изделие</p>
                         </div>
                         <div className="hidden md:block w-px h-12 bg-white/20" />
                         <div className="flex-1">
-                            <h3 className="text-xl md:text-2xl font-black mb-1">Доставка по России</h3>
+                            <h3 className="text-xl md:text-2xl font-semibold mb-1">Доставка по России</h3>
                             <p className="text-sm font-medium opacity-90">В наличии и на заказ до 2 недель</p>
                         </div>
                     </div>
@@ -221,7 +221,7 @@ export default function AntivandalClient({
                                         <p className="text-[var(--muted)] text-sm mb-4 line-clamp-2 flex-1">
                                             {p.shortDescription || `${p.upholstery}, ножки — ${p.legsColor.toLowerCase()}.`}
                                         </p>
-                                        <span className="text-lg font-black text-[var(--accent)]">
+                                        <span className="text-lg font-semibold text-[var(--accent)]">
                                             от {priceFmt.format(p.priceFrom)} ₽
                                         </span>
                                     </div>
@@ -305,14 +305,14 @@ export default function AntivandalClient({
             </section>
 
             {/* Final CTA */}
-            <section className="py-24 md:py-32 bg-black text-white text-center">
+            <section className="py-24 md:py-32 bg-[var(--accent)] text-white text-center">
                 <div className="container max-w-4xl mx-auto flex flex-col items-center">
-                    <h2 className="text-4xl md:text-5xl font-black mb-10 leading-tight">
+                    <h2 className="text-4xl md:text-5xl font-semibold mb-10 leading-tight">
                         Подберём антивандальные<br className="hidden md:block" /> стулья под вашу задачу
                     </h2>
                     <button
                         onClick={() => openModal("b2c", "antivandal_final")}
-                        className="button-primary bg-[var(--accent)] hover:bg-[#d8973b] text-white h-20 px-12 sm:px-16 w-full sm:w-auto text-xl md:text-2xl font-bold shadow-[0_20px_40px_-15px_rgba(224,166,78,0.5)] hover:-translate-y-2 transition-transform rounded-2xl"
+                        className="button-primary bg-[var(--accent)] hover:opacity-90 text-white h-20 px-12 sm:px-16 w-full sm:w-auto text-xl md:text-2xl font-bold shadow-lg hover:-translate-y-0.5 transition-all rounded-2xl"
                     >
                         Оставить заявку
                     </button>
