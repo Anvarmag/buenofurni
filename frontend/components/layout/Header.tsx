@@ -150,8 +150,8 @@ export default function Header({ variant = "default" }: { variant?: "default" | 
                 className={`fixed inset-0 z-[100] bg-[var(--background)] transition-transform duration-500 ease-in-out md:hidden flex flex-col ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
                     } overscroll-none`}
             >
-                <div className="flex flex-1 flex-col justify-between px-6 pb-12 pt-28 overflow-y-auto">
-                    <nav className="flex flex-col gap-6 text-2xl font-medium">
+                <div className="flex flex-1 flex-col gap-10 px-6 pb-10 pt-24 overflow-y-auto">
+                    <nav className="flex flex-col gap-5 text-xl font-medium">
                         {NAV_LINKS.map((link) => {
                             const isActive = pathname === link.href;
                             return (
