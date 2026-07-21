@@ -73,14 +73,14 @@ export default function Header({ variant = "default" }: { variant?: "default" | 
                     }`}
                 style={{ paddingTop: 'var(--sa-top, 0px)' }}
             >
-                <div className="mx-auto flex w-full h-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+                <div className="mx-auto flex w-full h-full max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
                     {/* Logo */}
-                    <Link href="/" className={`relative group flex items-center text-lg font-bold tracking-widest uppercase transition-colors duration-300 ${isDarkText ? "text-black" : "text-white"}`}>
+                    <Link href="/" className={`relative group flex shrink-0 items-center whitespace-nowrap text-base lg:text-lg font-bold tracking-wide uppercase transition-colors duration-300 ${isDarkText ? "text-black" : "text-white"}`}>
                         <span>БУЭНОФУРНИ | BUENOFURNI</span>
                     </Link>
 
                     {/* Desktop Navigation */}
-                    <nav className="hidden items-center gap-4 lg:gap-5 xl:gap-7 md:flex">
+                    <nav className="hidden items-center gap-3 lg:gap-4 xl:gap-6 md:flex">
                         {NAV_LINKS.map((link) => {
                             const isActive = pathname === link.href;
                             return (
@@ -113,7 +113,7 @@ export default function Header({ variant = "default" }: { variant?: "default" | 
                     </nav>
 
                     {/* Desktop CTA & Mobile Toggle */}
-                    <div className="relative flex items-center gap-4">
+                    <div className="relative flex shrink-0 items-center gap-4">
                         <button
                             onClick={handleCtaClick}
                             className="hidden rounded-full bg-[var(--accent)] px-5 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90 md:block"
